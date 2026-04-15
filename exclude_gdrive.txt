@@ -1,0 +1,11 @@
+.cursor
+env_backups
+latent_diffusion.egg-info
+src
+outputs
+__pycache__
+.codex
+.gitignore
+.git
+.vscode
+.pytest_cache
