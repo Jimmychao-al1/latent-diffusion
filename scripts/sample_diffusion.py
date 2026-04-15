@@ -7,6 +7,19 @@ from tqdm import trange
 from omegaconf import OmegaConf
 from PIL import Image
 
+def _bootstrap_local_paths():
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    candidate_paths = [
+        repo_root,
+        os.path.join(repo_root, "src", "taming-transformers"),
+        os.path.join(repo_root, "src", "clip"),
+    ]
+    for path in candidate_paths:
+        if os.path.isdir(path) and path not in sys.path:
+            sys.path.insert(0, path)
+
+_bootstrap_local_paths()
+
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.util import instantiate_from_config
 
@@ -113,7 +126,7 @@ def run(model, logdir, batch_size=50, vanilla=False, custom_steps=None, eta=None
 
 
     tstart = time.time()
-    n_saved = len(glob.glob(os.path.join(logdir,'*.png')))-1
+    n_saved = len(glob.glob(os.path.join(logdir, '*.png')))
     # path = logdir
     if model.cond_stage_model is None:
         all_images = []
@@ -128,11 +141,12 @@ def run(model, logdir, batch_size=50, vanilla=False, custom_steps=None, eta=None
             if n_saved >= n_samples:
                 print(f'Finish after generating {n_saved} samples')
                 break
-        all_img = np.concatenate(all_images, axis=0)
-        all_img = all_img[:n_samples]
-        shape_str = "x".join([str(x) for x in all_img.shape])
-        nppath = os.path.join(nplog, f"{shape_str}-samples.npz")
-        np.savez(nppath, all_img)
+        if nplog is not None:
+            all_img = np.concatenate(all_images, axis=0)
+            all_img = all_img[:n_samples]
+            shape_str = "x".join([str(x) for x in all_img.shape])
+            nppath = os.path.join(nplog, f"{shape_str}-samples.npz")
+            np.savez(nppath, all_img)
 
     else:
        raise NotImplementedError('Currently only sampling for unconditional models supported.')
@@ -214,6 +228,12 @@ def get_parser():
         help="the bs",
         default=10
     )
+    parser.add_argument(
+        "--no_npz",
+        default=False,
+        action='store_true',
+        help="disable saving samples as npz",
+    )
     return parser
 
 
@@ -228,7 +248,7 @@ def load_model_from_config(config, sd):
 def load_model(config, ckpt, gpu, eval_mode):
     if ckpt:
         print(f"Loading model from {ckpt}")
-        pl_sd = torch.load(ckpt, map_location="cpu")
+        pl_sd = torch.load(ckpt, map_location="cpu", weights_only=False)
         global_step = pl_sd["global_step"]
     else:
         pl_sd = {"state_dict": None}
@@ -293,7 +313,8 @@ if __name__ == "__main__":
     numpylogdir = os.path.join(logdir, "numpy")
 
     os.makedirs(imglogdir)
-    os.makedirs(numpylogdir)
+    if not opt.no_npz:
+        os.makedirs(numpylogdir)
     print(logdir)
     print(75 * "=")
 
@@ -308,6 +329,6 @@ if __name__ == "__main__":
 
     run(model, imglogdir, eta=opt.eta,
         vanilla=opt.vanilla_sample,  n_samples=opt.n_samples, custom_steps=opt.custom_steps,
-        batch_size=opt.batch_size, nplog=numpylogdir)
+        batch_size=opt.batch_size, nplog=None if opt.no_npz else numpylogdir)
 
     print("done.")
