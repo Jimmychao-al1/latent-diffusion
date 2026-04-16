@@ -1,8 +1,12 @@
-import argparse, os, sys, glob, datetime, yaml
+import argparse, os, sys, glob, datetime, yaml, shutil, random
 import torch
 import time
 import numpy as np
 from tqdm import trange
+import lmdb
+from io import BytesIO
+from torchvision import transforms
+import torchvision
 
 from omegaconf import OmegaConf
 from PIL import Image
@@ -24,6 +28,13 @@ from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.util import instantiate_from_config
 
 rescale = lambda x: (x + 1.) / 2.
+
+def __seed_all(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
 
 def custom_to_pil(x):
     x = x.detach().cpu()
@@ -132,8 +143,12 @@ def run(model, logdir, batch_size=50, vanilla=False, custom_steps=None, eta=None
         all_images = []
 
         print(f"Running unconditional sampling for {n_samples} samples")
-        for _ in trange(n_samples // batch_size, desc="Sampling Batches (unconditional)"):
-            logs = make_convolutional_sample(model, batch_size=batch_size,
+        total_batches = (max(n_samples - n_saved, 0) + batch_size - 1) // batch_size
+        for _ in trange(total_batches, desc="Sampling Batches (unconditional)"):
+            current_batch_size = min(batch_size, n_samples - n_saved)
+            if current_batch_size <= 0:
+                break
+            logs = make_convolutional_sample(model, batch_size=current_batch_size,
                                              vanilla=vanilla, custom_steps=custom_steps,
                                              eta=eta)
             n_saved = save_logs(logs, logdir, n_saved=n_saved, key="sample")
@@ -152,6 +167,106 @@ def run(model, logdir, batch_size=50, vanilla=False, custom_steps=None, eta=None
        raise NotImplementedError('Currently only sampling for unconditional models supported.')
 
     print(f"sampling of {n_saved} images finished in {(time.time() - tstart) / 60.:.2f} minutes.")
+
+
+def build_output_dirs(outputs_root, dataset_tag):
+    dataset_root = os.path.join(outputs_root, dataset_tag)
+    gen_dir = os.path.join(dataset_root, "gen_images")
+    eval_dir = os.path.join(dataset_root, "eval_images")
+    os.makedirs(gen_dir, exist_ok=True)
+    os.makedirs(eval_dir, exist_ok=True)
+    return gen_dir, eval_dir
+
+
+def reset_dir(dir_path):
+    if os.path.exists(dir_path):
+        shutil.rmtree(dir_path)
+    os.makedirs(dir_path, exist_ok=True)
+
+
+def export_real_from_lmdb(lmdb_path, eval_dir, num_images, img_size, lmdb_resolution, lmdb_zfill):
+    existing_pngs = glob.glob(os.path.join(eval_dir, "*.png")) if os.path.exists(eval_dir) else []
+    if os.path.exists(eval_dir) and len(existing_pngs) < num_images:
+        print(
+            f"Rebuilding real image cache: found {len(existing_pngs)} PNGs in {eval_dir}, "
+            f"expected at least {num_images}"
+        )
+        shutil.rmtree(eval_dir)
+
+    os.makedirs(eval_dir, exist_ok=True)
+    existing_pngs = glob.glob(os.path.join(eval_dir, "*.png"))
+    if len(existing_pngs) >= num_images:
+        print(f"Skipping real image export: found {len(existing_pngs)} PNGs in {eval_dir}")
+        return
+
+    resize = transforms.Resize(img_size)
+    crop = transforms.CenterCrop(img_size)
+    to_tensor = transforms.ToTensor()
+    normalize = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+
+    env = lmdb.open(
+        lmdb_path,
+        max_readers=32,
+        readonly=True,
+        lock=False,
+        readahead=False,
+        meminit=False,
+    )
+    with env.begin(write=False) as txn:
+        length = int(txn.get(b"length").decode("utf-8"))
+        if num_images > length:
+            raise ValueError(
+                f"Requested num_images={num_images}, but LMDB only has length={length}"
+            )
+
+        for index in trange(num_images, desc="Exporting real images"):
+            key = f"{lmdb_resolution}-{str(index).zfill(lmdb_zfill)}".encode("utf-8")
+            img_bytes = txn.get(key)
+            if img_bytes is None:
+                raise KeyError(f"Missing LMDB key: {key!r}")
+            img = Image.open(BytesIO(img_bytes)).convert("RGB")
+            img = resize(img)
+            img = crop(img)
+            # Match diffae loader_to_path flow: normalized tensor -> denormalize -> save_image.
+            tensor = to_tensor(img)
+            tensor = normalize(tensor)
+            tensor = (tensor + 1) / 2
+            torchvision.utils.save_image(tensor, os.path.join(eval_dir, f"{index}.png"))
+
+    env.close()
+
+
+def compute_fid(real_dir, gen_dir, fid_batch_size, device, dims=2048):
+    from pytorch_fid import fid_score
+
+    return fid_score.calculate_fid_given_paths(
+        [real_dir, gen_dir], fid_batch_size, device=str(device), dims=dims
+    )
+
+
+def format_fid_at(num_samples):
+    if num_samples % 1000 == 0:
+        return f"{num_samples // 1000}k"
+    return str(num_samples)
+
+
+def append_shared_fid_result(result_path, result):
+    import json
+
+    history = []
+    if os.path.exists(result_path):
+        try:
+            with open(result_path, "r") as f:
+                existing = json.load(f)
+            if isinstance(existing, list):
+                history = existing
+            elif isinstance(existing, dict):
+                history = [existing]
+        except Exception:
+            history = []
+    history.append(result)
+    with open(result_path, "w") as f:
+        json.dump(history, f, indent=2)
 
 
 def save_logs(logs, path, n_saved=0, key="sample", np_path=None):
@@ -234,6 +349,71 @@ def get_parser():
         action='store_true',
         help="disable saving samples as npz",
     )
+    parser.add_argument(
+        "--dataset_tag",
+        type=str,
+        required=True,
+        help='dataset tag (e.g. "ffhq256", "lsun_bedroom256")',
+    )
+    parser.add_argument(
+        "--outputs_root",
+        type=str,
+        default="outputs",
+        help="base output directory",
+    )
+    parser.add_argument(
+        "--eval_fid",
+        action="store_true",
+        help="export real images from LMDB and compute FID",
+    )
+    parser.add_argument(
+        "--real_lmdb",
+        type=str,
+        default=None,
+        help="path to real image LMDB",
+    )
+    parser.add_argument(
+        "--lmdb_resolution",
+        type=int,
+        default=256,
+        help="original_resolution used in LMDB keys",
+    )
+    parser.add_argument(
+        "--lmdb_zfill",
+        type=int,
+        default=5,
+        help="zero-padding width used in LMDB keys",
+    )
+    parser.add_argument(
+        "--num_fid_samples",
+        type=int,
+        default=50000,
+        help="number of real images to export for FID",
+    )
+    parser.add_argument(
+        "--fid_batch_size",
+        type=int,
+        default=32,
+        help="batch size for pytorch-fid",
+    )
+    parser.add_argument(
+        "--fid_dims",
+        type=int,
+        default=2048,
+        help="feature dimensions for FID",
+    )
+    parser.add_argument(
+        "--img_size",
+        type=int,
+        default=256,
+        help="target image size when exporting real images",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="random seed for reproducibility",
+    )
     return parser
 
 
@@ -267,6 +447,10 @@ if __name__ == "__main__":
     parser = get_parser()
     opt, unknown = parser.parse_known_args()
     ckpt = None
+    __seed_all(opt.seed)
+
+    if opt.eval_fid and not opt.real_lmdb:
+        raise ValueError("--real_lmdb is required when --eval_fid is set")
 
     if not os.path.exists(opt.resume):
         raise ValueError("Cannot find {}".format(opt.resume))
@@ -308,18 +492,15 @@ if __name__ == "__main__":
     print(f"global step: {global_step}")
     print(75 * "=")
     print("logging to:")
-    logdir = os.path.join(logdir, "samples", f"{global_step:08}", now)
-    imglogdir = os.path.join(logdir, "img")
-    numpylogdir = os.path.join(logdir, "numpy")
+    gen_dir, eval_dir = build_output_dirs(opt.outputs_root, opt.dataset_tag)
+    dataset_out_dir = os.path.join(opt.outputs_root, opt.dataset_tag)
+    reset_dir(gen_dir)
 
-    os.makedirs(imglogdir)
-    if not opt.no_npz:
-        os.makedirs(numpylogdir)
-    print(logdir)
+    print(dataset_out_dir)
     print(75 * "=")
 
     # write config out
-    sampling_file = os.path.join(logdir, "sampling_config.yaml")
+    sampling_file = os.path.join(dataset_out_dir, "sampling_config.yaml")
     sampling_conf = vars(opt)
 
     with open(sampling_file, 'w') as f:
@@ -327,8 +508,50 @@ if __name__ == "__main__":
     print(sampling_conf)
 
 
-    run(model, imglogdir, eta=opt.eta,
+    run(model, gen_dir, eta=opt.eta,
         vanilla=opt.vanilla_sample,  n_samples=opt.n_samples, custom_steps=opt.custom_steps,
-        batch_size=opt.batch_size, nplog=None if opt.no_npz else numpylogdir)
+        batch_size=opt.batch_size, nplog=None if opt.no_npz else gen_dir)
+
+    if opt.eval_fid:
+        export_real_from_lmdb(
+            lmdb_path=opt.real_lmdb,
+            eval_dir=eval_dir,
+            num_images=opt.num_fid_samples,
+            img_size=opt.img_size,
+            lmdb_resolution=opt.lmdb_resolution,
+            lmdb_zfill=opt.lmdb_zfill,
+        )
+
+        real_count = len(glob.glob(os.path.join(eval_dir, "*.png")))
+        gen_count = len(glob.glob(os.path.join(gen_dir, "*.png")))
+        if real_count < opt.num_fid_samples:
+            raise ValueError(
+                f"Not enough real images for FID: expected at least {opt.num_fid_samples}, got {real_count}"
+            )
+        if gen_count == 0:
+            raise ValueError("No generated images found for FID computation.")
+        if gen_count != opt.n_samples:
+            print(
+                f"Warning: generated image count ({gen_count}) != requested n_samples ({opt.n_samples}). "
+                "FID will use all images currently in gen_dir."
+            )
+
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        fid = compute_fid(eval_dir, gen_dir, opt.fid_batch_size, device, opt.fid_dims)
+        print(f"FID: {fid:.4f}")
+
+        result = {
+            "fid": fid,
+            "dataset_tag": opt.dataset_tag,
+            "model_ckpt": ckpt,
+            "fid_at": format_fid_at(opt.num_fid_samples),
+            "num_fid_samples": opt.num_fid_samples,
+            "real_dir": eval_dir,
+            "gen_dir": gen_dir,
+            "timestamp": datetime.datetime.now().isoformat(),
+        }
+        result_path = os.path.join(opt.outputs_root, "fid_result.json")
+        append_shared_fid_result(result_path, result)
+        print(f"FID result saved to {result_path}")
 
     print("done.")
