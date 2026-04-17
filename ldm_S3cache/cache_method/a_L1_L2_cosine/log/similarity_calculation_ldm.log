@@ -1,0 +1,38 @@
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] target_block=model.output_blocks.0
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] num_steps=100 n_samples=128 batch_size=32
+2026-04-17 15:30:14,141 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:30:14,147 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 15:30:16,499 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 15:30:18,231 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.0
+2026-04-17 15:30:18,232 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
+2026-04-17 15:30:44,835 [INFO] [LDM-Sim] [Similarity] Batch 0 完成，已收集 20 個樣本
+2026-04-17 15:31:10,910 [INFO] [LDM-Sim] [Similarity] Batch 1 完成，已收集 20 個樣本
+2026-04-17 15:31:36,981 [INFO] [LDM-Sim] [Similarity] Batch 2 完成，已收集 20 個樣本
+2026-04-17 15:32:00,853 [INFO] [LDM-Sim] [Similarity] 已收集 80 個樣本，停止資料收集（目標: 80）
+2026-04-17 15:32:03,028 [INFO] [LDM-Sim] [Similarity] Batch 3 完成，已收集 20 個樣本
+2026-04-17 15:32:03,487 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.246339, max=1.000000, diag_mean=1.000000, off_diag_mean=0.538204, off_diag_std=0.209708
+2026-04-17 15:32:04,589 [INFO] [LDM-Sim] Sampling done. generated=128
+2026-04-17 15:32:04,590 [INFO] [LDM-Sim] Phase 1 gate passed: {'l1_step_mean_shape': [99], 'cosine_shape': [100, 100], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] target_block=model.output_blocks.0
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] num_steps=200 n_samples=128 batch_size=32
+2026-04-17 15:37:53,339 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:37:53,345 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 15:37:55,874 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 15:37:57,612 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.0
+2026-04-17 15:37:57,613 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
+2026-04-17 15:38:52,304 [INFO] [LDM-Sim] [Similarity] Batch 0 完成，已收集 20 個樣本
+2026-04-17 15:39:46,758 [INFO] [LDM-Sim] [Similarity] Batch 1 完成，已收集 20 個樣本
+2026-04-17 15:40:41,260 [INFO] [LDM-Sim] [Similarity] Batch 2 完成，已收集 20 個樣本
+2026-04-17 15:41:29,230 [INFO] [LDM-Sim] [Similarity] 已收集 80 個樣本，停止資料收集（目標: 80）
+2026-04-17 15:41:35,704 [INFO] [LDM-Sim] [Similarity] Batch 3 完成，已收集 20 個樣本
+2026-04-17 15:41:35,911 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.245791, max=1.000000, diag_mean=1.000000, off_diag_mean=0.539391, off_diag_std=0.210882
+2026-04-17 15:41:36,758 [INFO] [LDM-Sim] Sampling done. generated=128
+2026-04-17 15:41:36,759 [INFO] [LDM-Sim] Phase 1 gate passed: {'expected_steps': 200, 'l1_step_mean_shape': [199], 'cosine_shape': [200, 200], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}
