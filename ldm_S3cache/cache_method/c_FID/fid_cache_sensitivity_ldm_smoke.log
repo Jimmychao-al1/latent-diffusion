@@ -1,0 +1,25 @@
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] num_steps=5 num_images=8 batch_size=4
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=64 fid_batch_size=4
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid_smoke
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm_smoke.json
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 16:40:56,117 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] num_steps=5 num_images=8 batch_size=4
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=64 fid_batch_size=4
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid_smoke
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm_smoke.json
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:42:05,036 [INFO] [c_FID-LDM] Rebuilding real images because count mismatch: existing=0 expected=8
+2026-04-17 16:42:05,871 [INFO] [c_FID-LDM] Real image cache ready: /home/jimmy/latent-diffusion/outputs/c_fid_smoke/ffhq256/real_images_n8_s256 (count=8)
+2026-04-17 16:42:05,877 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 16:42:06,508 [WARNING] [c_FID-LDM] Matplotlib created a temporary cache directory at /tmp/matplotlib-3b3bz_fl because the default path (/home/jimmy/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-04-17 16:42:08,079 [INFO] [c_FID-LDM] Failed to extract font properties from /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf: In FT2Font: Can not load face (unknown file format; error code 0x2)
+2026-04-17 16:42:08,236 [INFO] [c_FID-LDM] generated new fontManager
+2026-04-17 16:42:09,378 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
