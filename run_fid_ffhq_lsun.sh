@@ -9,7 +9,7 @@ $PYTHON scripts/sample_diffusion.py \
   --n_samples 50000 \
   --custom_steps 200 \
   --batch_size 16 \
-  -e 0 \
+  -e 1 \
   --no_npz \
   --eval_fid \
   --real_lmdb datasets/ffhq256_lmdb \
@@ -17,16 +17,15 @@ $PYTHON scripts/sample_diffusion.py \
   --lmdb_zfill 5 \
   --num_fid_samples 50000 \
   --fid_batch_size 32 \
-  --img_size 256 \
-  seed=0
+  --img_size 256
 
 $PYTHON scripts/sample_diffusion.py \
-  --resume models/ldm/lsun_bedrooms/model.ckpt \
+  --resume models/ldm/lsun_beds256/model.ckpt \
   --dataset_tag lsun_bedroom256 \
   --n_samples 50000 \
   --custom_steps 200 \
   --batch_size 16 \
-  -e 0 \
+  -e 1 \
   --no_npz \
   --eval_fid \
   --real_lmdb datasets/bedroom256_lmdb \
@@ -34,5 +33,4 @@ $PYTHON scripts/sample_diffusion.py \
   --lmdb_zfill 7 \
   --num_fid_samples 50000 \
   --fid_batch_size 32 \
-  --img_size 256 \
-  seed=0
+  --img_size 256 

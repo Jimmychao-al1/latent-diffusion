@@ -447,7 +447,7 @@ if __name__ == "__main__":
     parser = get_parser()
     opt, unknown = parser.parse_known_args()
     ckpt = None
-    __seed_all(opt.seed)
+    #__seed_all(opt.seed)
 
     if opt.eval_fid and not opt.real_lmdb:
         raise ValueError("--real_lmdb is required when --eval_fid is set")
