@@ -124,7 +124,7 @@ for BLOCK in "${BLOCKS[@]}"; do
   LOG_FILE="${LOG_DIR}/similarity_${SAFE_NAME}.log"
   CURRENT_BATCH_SIZE="${BATCH_SIZE}"
   if [[ "${BLOCK}" == "model.output_blocks.8" ]]; then
-    CURRENT_BATCH_SIZE="16"
+    CURRENT_BATCH_SIZE="8"
   fi
 
   echo ""
