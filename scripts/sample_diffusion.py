@@ -7,6 +7,8 @@ import lmdb
 from io import BytesIO
 from torchvision import transforms
 import torchvision
+from pathlib import Path
+import albumentations as A
 
 from omegaconf import OmegaConf
 from PIL import Image
@@ -236,6 +238,100 @@ def export_real_from_lmdb(lmdb_path, eval_dir, num_images, img_size, lmdb_resolu
     env.close()
 
 
+def _collect_images_recursive(root_dir):
+    exts = {".png", ".jpg", ".jpeg", ".webp", ".bmp"}
+    paths = []
+    root = Path(root_dir)
+    for p in root.rglob("*"):
+        if p.is_file() and p.suffix.lower() in exts:
+            paths.append(str(p))
+    paths.sort()
+    return paths
+
+
+def _resolve_listed_images(real_image_dir, real_image_list, all_paths):
+    path_set = set(all_paths)
+    by_name = {}
+    for p in all_paths:
+        name = os.path.basename(p)
+        if name in by_name and by_name[name] != p:
+            # Keep the first one deterministically; FFHQ names are expected unique.
+            continue
+        by_name[name] = p
+
+    resolved = []
+    missing = []
+    with open(real_image_list, "r") as f:
+        lines = [line.strip() for line in f if line.strip()]
+
+    for line in lines:
+        candidate_rel = os.path.join(real_image_dir, line)
+        if candidate_rel in path_set:
+            resolved.append(candidate_rel)
+            continue
+        name_only = os.path.basename(line)
+        if name_only in by_name:
+            resolved.append(by_name[name_only])
+            continue
+        missing.append(line)
+
+    if missing:
+        preview = ", ".join(missing[:10])
+        raise FileNotFoundError(
+            f"{len(missing)} entries from --real_image_list could not be resolved. "
+            f"First unresolved entries: {preview}"
+        )
+
+    return resolved
+
+
+def export_real_from_image_dir(real_image_dir, eval_dir, num_images, img_size, real_image_list=None):
+    existing_pngs = glob.glob(os.path.join(eval_dir, "*.png")) if os.path.exists(eval_dir) else []
+    if os.path.exists(eval_dir) and len(existing_pngs) < num_images:
+        print(
+            f"Rebuilding real image cache: found {len(existing_pngs)} PNGs in {eval_dir}, "
+            f"expected at least {num_images}"
+        )
+        shutil.rmtree(eval_dir)
+
+    os.makedirs(eval_dir, exist_ok=True)
+    existing_pngs = glob.glob(os.path.join(eval_dir, "*.png"))
+    if len(existing_pngs) >= num_images:
+        print(f"Skipping real image export: found {len(existing_pngs)} PNGs in {eval_dir}")
+        return
+
+    all_paths = _collect_images_recursive(real_image_dir)
+    if not all_paths:
+        raise ValueError(f"No images found under --real_image_dir: {real_image_dir}")
+
+    if real_image_list:
+        selected_paths = _resolve_listed_images(real_image_dir, real_image_list, all_paths)
+    else:
+        selected_paths = all_paths
+
+    if num_images > len(selected_paths):
+        raise ValueError(
+            f"Requested num_images={num_images}, but only {len(selected_paths)} source images are available"
+        )
+
+    selected_paths = selected_paths[:num_images]
+
+    # Match FFHQ preprocessing from issue flow:
+    # SmallestMaxSize(size) + CenterCrop(size) via albumentations.
+    preprocessor = A.Compose([
+        A.SmallestMaxSize(max_size=img_size),
+        A.CenterCrop(height=img_size, width=img_size),
+    ])
+
+    for index, src_path in enumerate(trange(len(selected_paths), desc="Exporting real images")):
+        img = Image.open(src_path).convert("RGB")
+        img = np.array(img).astype(np.uint8)
+        img = preprocessor(image=img)["image"]
+        img = (img / 127.5 - 1.0).astype(np.float32)
+        img = (img * 127.5 + 127.5).astype(np.uint8)
+        Image.fromarray(img).save(os.path.join(eval_dir, f"{index}.png"))
+
+
 def compute_fid(real_dir, gen_dir, fid_batch_size, device, dims=2048):
     from pytorch_fid import fid_score
 
@@ -364,7 +460,7 @@ def get_parser():
     parser.add_argument(
         "--eval_fid",
         action="store_true",
-        help="export real images from LMDB and compute FID",
+        help="export real images (from LMDB or image dir) and compute FID",
     )
     parser.add_argument(
         "--real_lmdb",
@@ -383,6 +479,18 @@ def get_parser():
         type=int,
         default=5,
         help="zero-padding width used in LMDB keys",
+    )
+    parser.add_argument(
+        "--real_image_dir",
+        type=str,
+        default=None,
+        help="path to real image directory (e.g. ffhq-dataset/images1024x1024)",
+    )
+    parser.add_argument(
+        "--real_image_list",
+        type=str,
+        default=None,
+        help="optional txt file listing real image names/paths to use (one per line)",
     )
     parser.add_argument(
         "--num_fid_samples",
@@ -447,10 +555,10 @@ if __name__ == "__main__":
     parser = get_parser()
     opt, unknown = parser.parse_known_args()
     ckpt = None
-    #__seed_all(opt.seed)
+    __seed_all(opt.seed)
 
-    if opt.eval_fid and not opt.real_lmdb:
-        raise ValueError("--real_lmdb is required when --eval_fid is set")
+    if opt.eval_fid and not (opt.real_lmdb or opt.real_image_dir):
+        raise ValueError("When --eval_fid is set, provide --real_lmdb or --real_image_dir")
 
     if not os.path.exists(opt.resume):
         raise ValueError("Cannot find {}".format(opt.resume))
@@ -513,14 +621,23 @@ if __name__ == "__main__":
         batch_size=opt.batch_size, nplog=None if opt.no_npz else gen_dir)
 
     if opt.eval_fid:
-        export_real_from_lmdb(
-            lmdb_path=opt.real_lmdb,
-            eval_dir=eval_dir,
-            num_images=opt.num_fid_samples,
-            img_size=opt.img_size,
-            lmdb_resolution=opt.lmdb_resolution,
-            lmdb_zfill=opt.lmdb_zfill,
-        )
+        if opt.real_image_dir:
+            export_real_from_image_dir(
+                real_image_dir=opt.real_image_dir,
+                eval_dir=eval_dir,
+                num_images=opt.num_fid_samples,
+                img_size=opt.img_size,
+                real_image_list=opt.real_image_list,
+            )
+        else:
+            export_real_from_lmdb(
+                lmdb_path=opt.real_lmdb,
+                eval_dir=eval_dir,
+                num_images=opt.num_fid_samples,
+                img_size=opt.img_size,
+                lmdb_resolution=opt.lmdb_resolution,
+                lmdb_zfill=opt.lmdb_zfill,
+            )
 
         real_count = len(glob.glob(os.path.join(eval_dir, "*.png")))
         gen_count = len(glob.glob(os.path.join(gen_dir, "*.png")))
