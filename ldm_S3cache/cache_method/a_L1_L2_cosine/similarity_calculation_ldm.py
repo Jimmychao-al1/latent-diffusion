@@ -306,6 +306,43 @@ def _build_ldm_collector_class(base_cls: Type[Any]) -> Type[Any]:
                 len(registered),
             )
 
+        def _calc_metrics_batch(
+            self, t1: torch.Tensor, t2: torch.Tensor, eps: float = 1e-6
+        ):
+            """
+            Override base metrics to prevent float16 overflow on LDM blocks.
+
+            LDM feature magnitudes can be much larger than Diff-AE, and float16
+            dot/norm in cosine may produce inf/inf -> NaN for step-wise cosine.
+            We upcast to float32 for stable reduction ops, while keeping output
+            tensors compatible with base-class accumulators.
+            """
+            t1f = t1.to(torch.float32)
+            t2f = t2.to(torch.float32)
+
+            diff = torch.abs(t1f - t2f)
+            l1_diff = diff.mean(dim=(1, 2, 3))
+            l1_ref = (torch.abs(t1f).mean(dim=(1, 2, 3)) + torch.abs(t2f).mean(dim=(1, 2, 3))) / 2.0 + eps
+            l1_vals = l1_diff / l1_ref
+
+            l1_rate_diff = diff.sum(dim=(1, 2, 3))
+            l1_rate_ref = torch.abs(t1f).sum(dim=(1, 2, 3)) + eps
+            l1_rate_vals = l1_rate_diff / l1_rate_ref
+
+            diff_sq = (t1f - t2f).pow(2).mean(dim=(1, 2, 3)).sqrt()
+            l2_ref = (t1f.pow(2).mean(dim=(1, 2, 3)).sqrt() + t2f.pow(2).mean(dim=(1, 2, 3)).sqrt()) / 2.0 + eps
+            l2_vals = diff_sq / l2_ref
+
+            t1_flat = t1f.reshape(t1f.size(0), -1)
+            t2_flat = t2f.reshape(t2f.size(0), -1)
+            dot = (t1_flat * t2_flat).sum(dim=1)
+            denom = torch.clamp(t1_flat.norm(dim=1) * t2_flat.norm(dim=1), min=eps)
+            cos_vals = dot / denom
+            cos_vals = torch.nan_to_num(cos_vals, nan=0.0, posinf=1.0, neginf=-1.0)
+            cos_vals = torch.clamp(cos_vals, min=-1.0, max=1.0)
+
+            return l1_vals, l1_rate_vals, l2_vals, cos_vals
+
     return LDMSimilarityCollector
 
 
@@ -372,17 +409,23 @@ def _validate_gate(npz_path: Path, expected_steps: int) -> Dict[str, Any]:
 
     arr = np.load(npz_path)
     l1_step_mean = arr["l1_step_mean"]
+    cos_step_mean = arr["cos_step_mean"]
     cosine = arr["cosine"]
 
     if expected_steps < 2:
         raise ValueError(f"expected_steps must be >=2, got {expected_steps}")
 
     expected_l1_shape = (expected_steps - 1,)
+    expected_cos_step_shape = (expected_steps - 1,)
     expected_cos_shape = (expected_steps, expected_steps)
 
     if l1_step_mean.shape != expected_l1_shape:
         raise ValueError(
             f"Gate failed: l1_step_mean.shape={l1_step_mean.shape}, expected {expected_l1_shape}"
+        )
+    if cos_step_mean.shape != expected_cos_step_shape:
+        raise ValueError(
+            f"Gate failed: cos_step_mean.shape={cos_step_mean.shape}, expected {expected_cos_step_shape}"
         )
     if cosine.shape != expected_cos_shape:
         raise ValueError(
@@ -391,6 +434,8 @@ def _validate_gate(npz_path: Path, expected_steps: int) -> Dict[str, Any]:
 
     if not np.isfinite(l1_step_mean).all():
         raise ValueError("Gate failed: l1_step_mean contains NaN/Inf")
+    if not np.isfinite(cos_step_mean).all():
+        raise ValueError("Gate failed: cos_step_mean contains NaN/Inf")
     if not np.isfinite(cosine).all():
         raise ValueError("Gate failed: cosine contains NaN/Inf")
 
@@ -406,8 +451,10 @@ def _validate_gate(npz_path: Path, expected_steps: int) -> Dict[str, Any]:
     return {
         "expected_steps": int(expected_steps),
         "l1_step_mean_shape": list(l1_step_mean.shape),
+        "cos_step_mean_shape": list(cos_step_mean.shape),
         "cosine_shape": list(cosine.shape),
         "l1_nan_count": int(np.isnan(l1_step_mean).sum()),
+        "cos_step_nan_count": int(np.isnan(cos_step_mean).sum()),
         "cosine_nan_count": int(np.isnan(cosine).sum()),
         "cosine_diag_mean": diag_mean,
         "cosine_diag_min": diag_min,

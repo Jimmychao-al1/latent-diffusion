@@ -88,3 +88,12 @@
 2026-04-17 18:22:24,934 [INFO] [c_FID-LDM] Layer encoder_layer_1 done: FID=0.370486 delta=-0.000100 real=1000 gen=1000
 2026-04-17 18:22:24,935 [INFO] [c_FID-LDM] [3/25] Evaluate layer=encoder_layer_2 canonical=model.input_blocks.2
 2026-04-17 18:22:24,942 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.2 total_steps=200 recompute_count=68
+2026-04-17 18:35:03,491 [INFO] [c_FID-LDM] Layer encoder_layer_2 done: FID=0.416506 delta=+0.045920 real=1000 gen=1000
+2026-04-17 18:35:03,491 [INFO] [c_FID-LDM] [4/25] Evaluate layer=encoder_layer_3 canonical=model.input_blocks.3
+2026-04-17 18:35:03,534 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.3 total_steps=200 recompute_count=68
+2026-04-17 18:49:11,278 [INFO] [c_FID-LDM] Layer encoder_layer_3 done: FID=0.442984 delta=+0.072398 real=1000 gen=1000
+2026-04-17 18:49:11,278 [INFO] [c_FID-LDM] [5/25] Evaluate layer=encoder_layer_4 canonical=model.input_blocks.4
+2026-04-17 18:49:11,346 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.4 total_steps=200 recompute_count=68
+2026-04-17 19:04:16,069 [INFO] [c_FID-LDM] Layer encoder_layer_4 done: FID=0.450526 delta=+0.079940 real=1000 gen=1000
+2026-04-17 19:04:16,069 [INFO] [c_FID-LDM] [6/25] Evaluate layer=encoder_layer_5 canonical=model.input_blocks.5
+2026-04-17 19:04:16,111 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.5 total_steps=200 recompute_count=68

@@ -49,9 +49,48 @@
             "recompute_hits": 4284,
             "total_hook_calls": 12600
           }
+        },
+        "encoder_layer_2": {
+          "fid": 0.416505559362534,
+          "delta": 0.04591979183395267,
+          "canonical_name": "model.input_blocks.2",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_2_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_3": {
+          "fid": 0.4429839290272568,
+          "delta": 0.0723981614986755,
+          "canonical_name": "model.input_blocks.3",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_3_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_4": {
+          "fid": 0.4505259094393921,
+          "delta": 0.07994014191081078,
+          "canonical_name": "model.input_blocks.4",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_4_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
         }
       }
     }
   },
-  "last_updated": "2026-04-17 18:22:24"
+  "last_updated": "2026-04-17 19:04:16"
 }
