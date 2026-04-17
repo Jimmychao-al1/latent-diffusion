@@ -666,6 +666,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--lmdb_resolution", type=int, default=256)
     p.add_argument("--lmdb_zfill", type=int, default=5)
     p.add_argument("--force_rebuild_real", action="store_true")
+    p.add_argument(
+        "--skip_real_prepare",
+        action="store_true",
+        help="Reuse existing real image cache and skip export/check-rebuild step.",
+    )
 
     p.add_argument(
         "--block_map",
@@ -728,18 +733,31 @@ def main() -> None:
     LOGGER.info("block_map=%s (blocks=%d)", block_map_path, len(runtime_order))
     LOGGER.info("=" * 80)
 
-    _ensure_real_images_exact_count(
-        real_dir=real_dir,
-        num_images=args.num_images,
-        img_size=args.img_size,
-        real_image_dir=args.real_image_dir,
-        real_image_list=args.real_image_list,
-        real_lmdb=args.real_lmdb,
-        lmdb_resolution=args.lmdb_resolution,
-        lmdb_zfill=args.lmdb_zfill,
-        force_rebuild=bool(args.force_rebuild_real),
-    )
-    LOGGER.info("Real image cache ready: %s (count=%d)", real_dir, _count_pngs(real_dir))
+    if args.skip_real_prepare:
+        cached_count = _count_pngs(real_dir)
+        if cached_count != args.num_images:
+            raise RuntimeError(
+                "skip_real_prepare is set, but existing real cache is invalid: "
+                f"expected {args.num_images}, got {cached_count} at {real_dir}"
+            )
+        LOGGER.info(
+            "Reuse existing real cache (skip export): %s (count=%d)",
+            real_dir,
+            cached_count,
+        )
+    else:
+        _ensure_real_images_exact_count(
+            real_dir=real_dir,
+            num_images=args.num_images,
+            img_size=args.img_size,
+            real_image_dir=args.real_image_dir,
+            real_image_list=args.real_image_list,
+            real_lmdb=args.real_lmdb,
+            lmdb_resolution=args.lmdb_resolution,
+            lmdb_zfill=args.lmdb_zfill,
+            force_rebuild=bool(args.force_rebuild_real),
+        )
+        LOGGER.info("Real image cache ready: %s (count=%d)", real_dir, _count_pngs(real_dir))
 
     logdir, ckpt = _resolve_resume_to_logdir_and_ckpt(args.resume)
     config = _load_config(logdir)

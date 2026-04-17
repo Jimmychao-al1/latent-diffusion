@@ -1,0 +1,87 @@
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 16:55:02,938 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 16:57:33,863 [INFO] [c_FID-LDM] Real image cache ready: /home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/real_images_n1000_s256 (count=1000)
+2026-04-17 16:57:33,869 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 16:57:35,945 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-17 16:57:36,565 [INFO] [c_FID-LDM] Computing baseline FID for T200...
+2026-04-17 17:03:19,807 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 17:03:19,807 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 17:03:19,807 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 17:03:19,808 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 17:03:52,934 [INFO] [c_FID-LDM] Real image cache ready: /home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/real_images_n1000_s256 (count=1000)
+2026-04-17 17:03:52,940 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 17:03:54,916 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-17 17:03:56,565 [INFO] [c_FID-LDM] Computing baseline FID for T200...
+2026-04-17 17:30:50,819 [INFO] [c_FID-LDM] Baseline FID: 0.370586
+2026-04-17 17:30:50,820 [INFO] [c_FID-LDM] Baseline-only mode complete.
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 17:30:53,578 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 17:30:53,580 [INFO] [c_FID-LDM] Reuse existing real cache (skip export): /home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/real_images_n1000_s256 (count=1000)
+2026-04-17 17:30:53,585 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 17:30:55,878 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-17 17:30:57,635 [INFO] [c_FID-LDM] Baseline exists for T200: 0.370586
+2026-04-17 17:30:57,635 [INFO] [c_FID-LDM] Running 25 layer experiment(s) for T200 k3
+2026-04-17 17:30:57,635 [INFO] [c_FID-LDM] [1/25] Evaluate layer=encoder_layer_0 canonical=model.input_blocks.0
+2026-04-17 17:30:57,642 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.0 total_steps=200 recompute_count=68
+2026-04-17 17:50:29,657 [INFO] [c_FID-LDM] Layer encoder_layer_0 done: FID=0.350981 delta=-0.019605 real=1000 gen=1000
+2026-04-17 17:50:29,661 [INFO] [c_FID-LDM] [2/25] Evaluate layer=encoder_layer_1 canonical=model.input_blocks.1
+2026-04-17 17:50:29,674 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.1 total_steps=200 recompute_count=68
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 17:57:43,641 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 17:57:43,642 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 17:57:43,642 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 17:57:43,642 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 18:08:05,920 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 18:08:39,503 [INFO] [c_FID-LDM] Real image cache ready: /home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/real_images_n1000_s256 (count=1000)
+2026-04-17 18:08:39,509 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 18:08:41,466 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-17 18:08:43,122 [INFO] [c_FID-LDM] Baseline exists for T200: 0.370586
+2026-04-17 18:08:43,123 [INFO] [c_FID-LDM] Baseline-only mode complete.
+2026-04-17 18:08:45,505 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] LDM c_FID cache sensitivity
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] num_steps=200 num_images=1000 batch_size=16
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] eta=0.0 (forced) fid_dims=192 fid_batch_size=32
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] output_root=/home/jimmy/latent-diffusion/outputs/c_fid
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] results_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/c_FID/fid_sensitivity_results_ldm.json
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] block_map=/home/jimmy/latent-diffusion/ldm_block_map_ffhq256.json (blocks=25)
+2026-04-17 18:08:45,506 [INFO] [c_FID-LDM] ================================================================================
+2026-04-17 18:08:45,507 [INFO] [c_FID-LDM] Reuse existing real cache (skip export): /home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/real_images_n1000_s256 (count=1000)
+2026-04-17 18:08:45,513 [INFO] [c_FID-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 18:08:47,517 [INFO] [c_FID-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-17 18:08:49,218 [INFO] [c_FID-LDM] Baseline exists for T200: 0.370586
+2026-04-17 18:08:49,219 [INFO] [c_FID-LDM] Running 25 layer experiment(s) for T200 k3
+2026-04-17 18:08:49,219 [INFO] [c_FID-LDM] [1/25] Skip existing: encoder_layer_0
+2026-04-17 18:08:49,219 [INFO] [c_FID-LDM] [2/25] Evaluate layer=encoder_layer_1 canonical=model.input_blocks.1
+2026-04-17 18:08:49,235 [INFO] [c_FID-LDM] Runtime cache enabled: target=input_blocks.1 total_steps=200 recompute_count=68
