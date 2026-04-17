@@ -36,3 +36,41 @@
 2026-04-17 15:41:35,911 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.245791, max=1.000000, diag_mean=1.000000, off_diag_mean=0.539391, off_diag_std=0.210882
 2026-04-17 15:41:36,758 [INFO] [LDM-Sim] Sampling done. generated=128
 2026-04-17 15:41:36,759 [INFO] [LDM-Sim] Phase 1 gate passed: {'expected_steps': 200, 'l1_step_mean_shape': [199], 'cosine_shape': [200, 200], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] target_block=model.output_blocks.0
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] num_steps=100 n_samples=128 batch_size=32
+2026-04-17 15:56:16,974 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 15:56:16,980 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 15:56:34,621 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 15:56:36,321 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.0
+2026-04-17 15:56:36,322 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
+2026-04-17 15:57:02,680 [INFO] [LDM-Sim] [Similarity] Batch 0 完成，已收集 20 個樣本
+2026-04-17 15:57:28,731 [INFO] [LDM-Sim] [Similarity] Batch 1 完成，已收集 20 個樣本
+2026-04-17 15:57:54,806 [INFO] [LDM-Sim] [Similarity] Batch 2 完成，已收集 20 個樣本
+2026-04-17 15:58:18,698 [INFO] [LDM-Sim] [Similarity] 已收集 80 個樣本，停止資料收集（目標: 80）
+2026-04-17 15:58:20,875 [INFO] [LDM-Sim] [Similarity] Batch 3 完成，已收集 20 個樣本
+2026-04-17 15:58:21,001 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.370283, max=1.000000, diag_mean=1.000000, off_diag_mean=0.682619, off_diag_std=0.205582
+2026-04-17 15:58:21,664 [INFO] [LDM-Sim] Sampling done. generated=128
+2026-04-17 15:58:21,665 [INFO] [LDM-Sim] Phase 1 gate passed: {'expected_steps': 100, 'l1_step_mean_shape': [99], 'cosine_shape': [100, 100], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] target_block=model.output_blocks.0
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] num_steps=200 n_samples=128 batch_size=32 eta=0.0(forced)
+2026-04-17 16:05:23,874 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 16:05:23,993 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 16:05:36,465 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 16:05:37,185 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.0
+2026-04-17 16:05:37,185 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
+2026-04-17 16:06:31,821 [INFO] [LDM-Sim] [Similarity] Batch 0 完成，已收集 20 個樣本
+2026-04-17 16:07:26,361 [INFO] [LDM-Sim] [Similarity] Batch 1 完成，已收集 20 個樣本
+2026-04-17 16:08:20,921 [INFO] [LDM-Sim] [Similarity] Batch 2 完成，已收集 20 個樣本
+2026-04-17 16:09:09,046 [INFO] [LDM-Sim] [Similarity] 已收集 80 個樣本，停止資料收集（目標: 80）
+2026-04-17 16:09:15,325 [INFO] [LDM-Sim] [Similarity] Batch 3 完成，已收集 20 個樣本
+2026-04-17 16:09:15,492 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.370917, max=1.000000, diag_mean=1.000000, off_diag_mean=0.684051, off_diag_std=0.205741
+2026-04-17 16:09:16,399 [INFO] [LDM-Sim] Sampling done. generated=128
+2026-04-17 16:09:16,400 [INFO] [LDM-Sim] Phase 1 gate passed: {'expected_steps': 200, 'l1_step_mean_shape': [199], 'cosine_shape': [200, 200], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}

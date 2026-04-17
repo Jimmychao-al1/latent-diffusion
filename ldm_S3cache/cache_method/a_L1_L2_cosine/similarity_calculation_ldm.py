@@ -340,11 +340,13 @@ def _run_unconditional_sampling(
                 current_bs = min(batch_size, n_samples - generated)
                 if current_bs <= 0:
                     break
+                # Analysis protocol: always use deterministic DDIM (eta=0).
+                # Keep `eta` in signature for compatibility, but ignore runtime input.
                 samples, _ = sampler.sample(
                     S=num_steps,
                     batch_size=current_bs,
                     shape=shape,
-                    eta=eta,
+                    eta=0.0,
                     verbose=False,
                 )
                 if save_generated_pngs:
@@ -419,7 +421,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--num_steps", type=int, default=100)
     p.add_argument("--n_samples", type=int, default=128)
     p.add_argument("--batch_size", type=int, default=32)
-    p.add_argument("--eta", type=float, default=1.0)
+    p.add_argument(
+        "--eta",
+        type=float,
+        default=0.0,
+        help="Kept for CLI compatibility. Analysis run always forces eta=0.",
+    )
     p.add_argument("--seed", type=int, default=0)
 
     p.add_argument("--target_block", type=str, default="model.output_blocks.0")
@@ -478,6 +485,12 @@ def main() -> None:
     args = parse_args()
     _seed_all(args.seed)
 
+    if float(args.eta) != 0.0:
+        LOGGER.warning(
+            "Received --eta=%s, but analysis protocol forces eta=0.0. Using eta=0.0.",
+            args.eta,
+        )
+
     output_root = _resolve_repo_path(args.output_root)
     similarity_root = output_root / f"T_{args.num_steps}" / "v2_latest"
     log_file = _resolve_repo_path(args.log_file) if args.log_file else (output_root / "log" / "similarity_calculation_ldm.log")
@@ -488,7 +501,13 @@ def main() -> None:
     LOGGER.info("resume=%s", args.resume)
     LOGGER.info("target_block=%s", args.target_block)
     LOGGER.info("output_root=%s", output_root)
-    LOGGER.info("num_steps=%d n_samples=%d batch_size=%d", args.num_steps, args.n_samples, args.batch_size)
+    LOGGER.info(
+        "num_steps=%d n_samples=%d batch_size=%d eta=%s(forced)",
+        args.num_steps,
+        args.n_samples,
+        args.batch_size,
+        0.0,
+    )
     LOGGER.info("=" * 80)
 
     logdir, ckpt = _resolve_resume_to_logdir_and_ckpt(args.resume)
