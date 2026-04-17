@@ -36,9 +36,22 @@
             "recompute_hits": 4284,
             "total_hook_calls": 12600
           }
+        },
+        "encoder_layer_1": {
+          "fid": 0.37048552245541444,
+          "delta": -0.00010024507316686027,
+          "canonical_name": "model.input_blocks.1",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_1_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
         }
       }
     }
   },
-  "last_updated": "2026-04-17 17:50:29"
+  "last_updated": "2026-04-17 18:22:24"
 }
