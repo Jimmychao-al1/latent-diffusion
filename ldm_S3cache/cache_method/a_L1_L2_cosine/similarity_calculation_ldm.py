@@ -484,7 +484,7 @@ def parse_args() -> argparse.Namespace:
         default="ldm_S3cache/cache_method/a_L1_L2_cosine",
         help="Root output path (repo-relative or absolute)",
     )
-    p.add_argument("--similarity_dtype", type=str, default="float16", choices=["float16", "float32"])
+    p.add_argument("--similarity_dtype", type=str, default="float32", choices=["float16", "float32"])
     p.add_argument(
         "--sample_strategy",
         type=str,

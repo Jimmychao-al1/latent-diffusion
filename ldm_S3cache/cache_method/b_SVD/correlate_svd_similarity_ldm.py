@@ -55,7 +55,16 @@ def compute_correlations(x: np.ndarray, y: np.ndarray) -> Dict[str, Any]:
         bad = int((~np.isfinite(y)).sum())
         raise ValueError(f"y contains non-finite values: count={bad}")
     if float(np.std(x)) == 0.0 or float(np.std(y)) == 0.0:
-        raise ValueError("constant input sequence; correlation undefined")
+        # Keep pipeline running for degenerate-but-valid sequences.
+        # This avoids null/NaN in output JSON while explicitly marking status.
+        return {
+            "pearson": 0.0,
+            "spearman": 0.0,
+            "pearson_pvalue": 1.0,
+            "spearman_pvalue": 1.0,
+            "valid_pairs": int(len(x)),
+            "status": "constant_input_assumed_zero",
+        }
 
     pearson_r, pearson_p = stats.pearsonr(x, y)
     spearman_r, spearman_p = stats.spearmanr(x, y)

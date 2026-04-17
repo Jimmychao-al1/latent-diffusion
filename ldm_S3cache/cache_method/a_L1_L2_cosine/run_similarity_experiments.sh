@@ -13,6 +13,7 @@
 #   ETA=1.0
 #   COLLECT_PER_BATCH=20
 #   SAMPLE_STRATEGY=random
+#   SIMILARITY_DTYPE=float32
 #   OUTPUT_ROOT=ldm_S3cache/cache_method/a_L1_L2_cosine
 #   BASE_COLLECTOR_PY=/home/jimmy/diffae/QATcode/cache_method/a_L1_L2_cosine/similarity_calculation.py
 #   SAVE_GENERATED_PNGS=1
@@ -30,10 +31,11 @@ SCRIPT="ldm_S3cache/cache_method/a_L1_L2_cosine/similarity_calculation_ldm.py"
 RESUME="${RESUME:-models/ldm/ffhq256/model.ckpt}"
 NUM_STEPS="${NUM_STEPS:-200}"
 N_SAMPLES="${N_SAMPLES:-128}"
-BATCH_SIZE="${BATCH_SIZE:-32}"
+BATCH_SIZE="${BATCH_SIZE:-16}"
 ETA="${ETA:-0.0}"
 COLLECT_PER_BATCH="${COLLECT_PER_BATCH:-20}"
 SAMPLE_STRATEGY="${SAMPLE_STRATEGY:-random}"
+SIMILARITY_DTYPE="${SIMILARITY_DTYPE:-float32}"
 OUTPUT_ROOT="${OUTPUT_ROOT:-ldm_S3cache/cache_method/a_L1_L2_cosine}"
 BASE_COLLECTOR_PY="${BASE_COLLECTOR_PY:-/home/jimmy/diffae/QATcode/cache_method/a_L1_L2_cosine/similarity_calculation.py}"
 SAVE_GENERATED_PNGS="${SAVE_GENERATED_PNGS:-0}"
@@ -98,6 +100,7 @@ echo "  BATCH_SIZE=${BATCH_SIZE}"
 echo "  ETA=${ETA}"
 echo "  COLLECT_PER_BATCH=${COLLECT_PER_BATCH}"
 echo "  SAMPLE_STRATEGY=${SAMPLE_STRATEGY}"
+echo "  SIMILARITY_DTYPE=${SIMILARITY_DTYPE}"
 echo "  OUTPUT_ROOT=${OUTPUT_ROOT}"
 echo "  TOTAL_BLOCKS=${#BLOCKS[@]}"
 if [[ -n "${START_FROM_BLOCK}" ]]; then
@@ -119,10 +122,15 @@ for BLOCK in "${BLOCKS[@]}"; do
 
   SAFE_NAME="$(echo "${BLOCK}" | tr '.' '_')"
   LOG_FILE="${LOG_DIR}/similarity_${SAFE_NAME}.log"
+  CURRENT_BATCH_SIZE="${BATCH_SIZE}"
+  if [[ "${BLOCK}" == "model.output_blocks.8" ]]; then
+    CURRENT_BATCH_SIZE="16"
+  fi
 
   echo ""
   echo "--------------------------------------------------"
   echo "Running block: ${BLOCK}"
+  echo "Batch size: ${CURRENT_BATCH_SIZE}"
   echo "Log: ${LOG_FILE}"
   echo "--------------------------------------------------"
 
@@ -142,11 +150,12 @@ for BLOCK in "${BLOCKS[@]}"; do
     --resume "${RESUME}" \
     --num_steps "${NUM_STEPS}" \
     --n_samples "${N_SAMPLES}" \
-    --batch_size "${BATCH_SIZE}" \
+    --batch_size "${CURRENT_BATCH_SIZE}" \
     --eta "${ETA}" \
     --target_block "${BLOCK}" \
     --collect_per_batch "${COLLECT_PER_BATCH}" \
     --sample_strategy "${SAMPLE_STRATEGY}" \
+    --similarity_dtype "${SIMILARITY_DTYPE}" \
     --output_root "${OUTPUT_ROOT}" \
     --base_collector_py "${BASE_COLLECTOR_PY}" \
     --log_file "${LOG_FILE}" \

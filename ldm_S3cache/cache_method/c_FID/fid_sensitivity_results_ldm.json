@@ -88,9 +88,61 @@
             "recompute_hits": 4284,
             "total_hook_calls": 12600
           }
+        },
+        "encoder_layer_5": {
+          "fid": 0.38682851504542626,
+          "delta": 0.016242747516844958,
+          "canonical_name": "model.input_blocks.5",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_5_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_6": {
+          "fid": 0.41804558736997777,
+          "delta": 0.04745981984139647,
+          "canonical_name": "model.input_blocks.6",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_6_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_7": {
+          "fid": 0.44101202543663476,
+          "delta": 0.07042625790805346,
+          "canonical_name": "model.input_blocks.7",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_7_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_8": {
+          "fid": 0.44781169439160706,
+          "delta": 0.07722592686302576,
+          "canonical_name": "model.input_blocks.8",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_8_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
         }
       }
     }
   },
-  "last_updated": "2026-04-17 19:04:16"
+  "last_updated": "2026-04-17 20:59:27"
 }

@@ -74,3 +74,25 @@
 2026-04-17 16:09:15,492 [INFO] [LDM-Sim] [Similarity] model.output_blocks.0 cosine: min=0.370917, max=1.000000, diag_mean=1.000000, off_diag_mean=0.684051, off_diag_std=0.205741
 2026-04-17 16:09:16,399 [INFO] [LDM-Sim] Sampling done. generated=128
 2026-04-17 16:09:16,400 [INFO] [LDM-Sim] Phase 1 gate passed: {'expected_steps': 200, 'l1_step_mean_shape': [199], 'cosine_shape': [200, 200], 'l1_nan_count': 0, 'cosine_nan_count': 0, 'cosine_diag_mean': 1.0, 'cosine_diag_min': 1.0, 'cosine_diag_max': 1.0}
+2026-04-17 21:06:26,945 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 21:06:26,945 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 21:06:26,945 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 21:06:26,945 [INFO] [LDM-Sim] target_block=model.output_blocks.8
+2026-04-17 21:06:26,945 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 21:06:26,946 [INFO] [LDM-Sim] num_steps=200 n_samples=128 batch_size=32 eta=0.0(forced)
+2026-04-17 21:06:26,946 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 21:06:26,951 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 21:06:29,194 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 21:06:29,653 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.8
+2026-04-17 21:06:29,653 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] Phase 1 | LDM a_L1_L2_cosine similarity collection
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] resume=models/ldm/ffhq256/model.ckpt
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] target_block=model.output_blocks.8
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] output_root=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/a_L1_L2_cosine
+2026-04-17 21:07:45,293 [INFO] [LDM-Sim] num_steps=200 n_samples=128 batch_size=16 eta=0.0(forced)
+2026-04-17 21:07:45,294 [INFO] [LDM-Sim] ================================================================================
+2026-04-17 21:07:45,300 [INFO] [LDM-Sim] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-17 21:07:47,517 [INFO] [LDM-Sim] load_state_dict: missing=0 unexpected=4
+2026-04-17 21:07:48,103 [INFO] [LDM-Sim] [LDM Similarity] register block hook: model.output_blocks.8
+2026-04-17 21:07:48,103 [INFO] [LDM-Sim] [LDM Similarity] registered 1 block hooks + model step hooks
