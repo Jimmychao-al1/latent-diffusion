@@ -140,9 +140,531 @@
             "recompute_hits": 4284,
             "total_hook_calls": 12600
           }
+        },
+        "encoder_layer_9": {
+          "fid": 0.3747409807164104,
+          "delta": 0.0041552131878290766,
+          "canonical_name": "model.input_blocks.9",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_9_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_10": {
+          "fid": 0.40524325636553726,
+          "delta": 0.03465748883695596,
+          "canonical_name": "model.input_blocks.10",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_10_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_11": {
+          "fid": 0.4208709561964099,
+          "delta": 0.050285188667828606,
+          "canonical_name": "model.input_blocks.11",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_encoder_layer_11_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "middle_layer": {
+          "fid": 0.43668475459984535,
+          "delta": 0.06609898707126405,
+          "canonical_name": "model.middle_block",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_middle_layer_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_0": {
+          "fid": 0.40406889604590646,
+          "delta": 0.033483128517325156,
+          "canonical_name": "model.output_blocks.0",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_0_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_1": {
+          "fid": 0.3481064773797158,
+          "delta": -0.022479290148865516,
+          "canonical_name": "model.output_blocks.1",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_1_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_2": {
+          "fid": 0.3760757771401373,
+          "delta": 0.00549000961155599,
+          "canonical_name": "model.output_blocks.2",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_2_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_3": {
+          "fid": 0.3997763464412074,
+          "delta": 0.02919057891262611,
+          "canonical_name": "model.output_blocks.3",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_3_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_4": {
+          "fid": 0.4484613755294369,
+          "delta": 0.07787560800085558,
+          "canonical_name": "model.output_blocks.4",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_4_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_5": {
+          "fid": 0.4626746395086059,
+          "delta": 0.09208887198002458,
+          "canonical_name": "model.output_blocks.5",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_5_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_6": {
+          "fid": 0.4003341506792495,
+          "delta": 0.02974838315066819,
+          "canonical_name": "model.output_blocks.6",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_6_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_7": {
+          "fid": 0.40458858111940543,
+          "delta": 0.03400281359082413,
+          "canonical_name": "model.output_blocks.7",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_7_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_8": {
+          "fid": 0.4246900584537201,
+          "delta": 0.0541042909251388,
+          "canonical_name": "model.output_blocks.8",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_8_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_9": {
+          "fid": 0.5337054892489377,
+          "delta": 0.16311972172035638,
+          "canonical_name": "model.output_blocks.9",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_9_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_10": {
+          "fid": 0.43248124093625506,
+          "delta": 0.06189547340767376,
+          "canonical_name": "model.output_blocks.10",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_10_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_11": {
+          "fid": 0.40770608488055515,
+          "delta": 0.03712031735197385,
+          "canonical_name": "model.output_blocks.11",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k3_decoder_layer_11_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 8316,
+            "recompute_hits": 4284,
+            "total_hook_calls": 12600
+          }
+        }
+      },
+      "k4": {
+        "encoder_layer_0": {
+          "fid": 0.34757595465931246,
+          "delta": -0.023009812869268842,
+          "canonical_name": "model.input_blocks.0",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_0_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_1": {
+          "fid": 0.40763452988208826,
+          "delta": 0.03704876235350696,
+          "canonical_name": "model.input_blocks.1",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_1_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_2": {
+          "fid": 0.45864613543902877,
+          "delta": 0.08806036791044747,
+          "canonical_name": "model.input_blocks.2",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_2_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_3": {
+          "fid": 0.47438449634594093,
+          "delta": 0.10379872881735963,
+          "canonical_name": "model.input_blocks.3",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_3_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_4": {
+          "fid": 0.426457472372352,
+          "delta": 0.055871704843770686,
+          "canonical_name": "model.input_blocks.4",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_4_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_5": {
+          "fid": 0.37134481119732143,
+          "delta": 0.0007590436687401336,
+          "canonical_name": "model.input_blocks.5",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_5_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_6": {
+          "fid": 0.38464753106904226,
+          "delta": 0.014061763540460959,
+          "canonical_name": "model.input_blocks.6",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_6_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_7": {
+          "fid": 0.41351290744873737,
+          "delta": 0.042927139920156066,
+          "canonical_name": "model.input_blocks.7",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_7_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_8": {
+          "fid": 0.44382173658329904,
+          "delta": 0.07323596905471774,
+          "canonical_name": "model.input_blocks.8",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_8_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_9": {
+          "fid": 0.45171477114424974,
+          "delta": 0.08112900361566844,
+          "canonical_name": "model.input_blocks.9",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_9_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_10": {
+          "fid": 0.37568284344304814,
+          "delta": 0.005097075914466842,
+          "canonical_name": "model.input_blocks.10",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_10_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "encoder_layer_11": {
+          "fid": 0.3802624401201875,
+          "delta": 0.009676672591606206,
+          "canonical_name": "model.input_blocks.11",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_encoder_layer_11_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "middle_layer": {
+          "fid": 0.39302114955068745,
+          "delta": 0.022435382022106154,
+          "canonical_name": "model.middle_block",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_middle_layer_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_0": {
+          "fid": 0.5059160373037734,
+          "delta": 0.13533026977519214,
+          "canonical_name": "model.output_blocks.0",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_0_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_1": {
+          "fid": 0.4371489851078678,
+          "delta": 0.06656321757928652,
+          "canonical_name": "model.output_blocks.1",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_1_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_2": {
+          "fid": 0.3912587234440039,
+          "delta": 0.02067295591542262,
+          "canonical_name": "model.output_blocks.2",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_2_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_3": {
+          "fid": 0.3279194234652536,
+          "delta": -0.0426663440633277,
+          "canonical_name": "model.output_blocks.3",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_3_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_4": {
+          "fid": 0.4216471974851359,
+          "delta": 0.051061429956554605,
+          "canonical_name": "model.output_blocks.4",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_4_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_5": {
+          "fid": 0.4742784807339717,
+          "delta": 0.10369271320539042,
+          "canonical_name": "model.output_blocks.5",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_5_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_6": {
+          "fid": 0.411584299733601,
+          "delta": 0.0409985322050197,
+          "canonical_name": "model.output_blocks.6",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_6_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_7": {
+          "fid": 0.46387003499120993,
+          "delta": 0.09328426746262863,
+          "canonical_name": "model.output_blocks.7",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_7_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_8": {
+          "fid": 0.40630355696900367,
+          "delta": 0.035717789440422365,
+          "canonical_name": "model.output_blocks.8",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_8_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_9": {
+          "fid": 0.4508445683178337,
+          "delta": 0.0802588007892524,
+          "canonical_name": "model.output_blocks.9",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_9_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
+        },
+        "decoder_layer_10": {
+          "fid": 0.415869543942172,
+          "delta": 0.045283776413590715,
+          "canonical_name": "model.output_blocks.10",
+          "experiment_dir": "/home/jimmy/latent-diffusion/outputs/c_fid/ffhq256/T200_k4_decoder_layer_10_seed0",
+          "real_count": 1000,
+          "gen_count": 1000,
+          "cache_stats": {
+            "cache_hits": 9387,
+            "recompute_hits": 3213,
+            "total_hook_calls": 12600
+          }
         }
       }
     }
   },
-  "last_updated": "2026-04-17 20:59:27"
+  "last_updated": "2026-04-18 12:08:13"
 }

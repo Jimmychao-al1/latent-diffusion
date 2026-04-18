@@ -6,20 +6,20 @@
   "x_axis_def": "interval-wise t_curr (left=noise side, right=clear side)",
   "correlation": {
     "L1_vs_SVD": {
-      "pearson": 0.9421858400342307,
-      "spearman": 0.9946307294045988,
-      "pearson_pvalue": 1.724870309537673e-95,
-      "spearman_pvalue": 4.893091583107598e-196,
+      "pearson": 0.9416282103172521,
+      "spearman": 0.9946322521699407,
+      "pearson_pvalue": 4.31869412695407e-95,
+      "spearman_pvalue": 4.758624768564469e-196,
       "valid_pairs": 199,
       "status": "ok"
     },
     "CosDist_vs_SVD": {
-      "pearson": 0.0,
-      "spearman": 0.0,
-      "pearson_pvalue": 1.0,
-      "spearman_pvalue": 1.0,
+      "pearson": 0.8493747145528578,
+      "spearman": 0.9936935523612301,
+      "pearson_pvalue": 1.409657047974033e-56,
+      "spearman_pvalue": 3.5647626489296284e-189,
       "valid_pairs": 199,
-      "status": "constant_input_assumed_zero"
+      "status": "ok"
     }
   },
   "t_curr_interval": [

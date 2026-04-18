@@ -1,0 +1,13 @@
+2026-04-18 03:07:50,432 [INFO] [b_SVD-LDM] ================================================================================
+2026-04-18 03:07:50,432 [INFO] [b_SVD-LDM] LDM b_SVD Stage A
+2026-04-18 03:07:50,432 [INFO] [b_SVD-LDM] target_block=model.input_blocks.7 target_N=32 T=200
+2026-04-18 03:07:50,432 [INFO] [b_SVD-LDM] in_memory_pipeline=True
+2026-04-18 03:07:50,433 [INFO] [b_SVD-LDM] ================================================================================
+2026-04-18 03:07:50,438 [INFO] [b_SVD-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-04-18 03:07:53,047 [INFO] [b_SVD-LDM] load_state_dict: missing=0 unexpected=4
+2026-04-18 03:07:53,451 [INFO] [b_SVD-LDM] Register block hook: model.input_blocks.7
+2026-04-18 03:07:53,604 [INFO] [b_SVD-LDM] Feature shape: C=672 H=16 W=16
+2026-04-18 03:08:17,715 [INFO] [b_SVD-LDM] Reached target_N for all timesteps at batch=2
+2026-04-18 03:08:17,717 [INFO] [b_SVD-LDM] Run in-memory Stage B/C...
+2026-04-18 03:08:23,538 [INFO] [b_SVD-LDM] Stage B done
+2026-04-18 03:08:23,978 [INFO] [b_SVD-LDM] Stage C done
