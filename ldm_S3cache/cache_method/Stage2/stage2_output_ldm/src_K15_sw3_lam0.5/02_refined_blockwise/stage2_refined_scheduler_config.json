@@ -1,5 +1,5 @@
 {
-  "version": "stage1_baseline_v1_ldm",
+  "version": "stage2_refined_v1_ldm",
   "T": 200,
   "time_order": "ddim_descending_Tminus1_to_0",
   "expanded_mask_layout": "index i=0 is first DDIM step (t=T-1); i=T-1 is t=0",
@@ -12,7 +12,7 @@
     "K_change_points": 15,
     "K_effective_used": 15,
     "smooth_window": 3,
-    "lambda": 2.0,
+    "lambda": 0.5,
     "lambda_sweep": [
       0.25,
       0.5,
@@ -130,8 +130,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -330,10 +330,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -354,8 +354,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -546,18 +546,18 @@
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         true,
-        false,
         true,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -578,8 +578,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -778,10 +778,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -802,8 +802,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -1002,10 +1002,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -1026,8 +1026,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -1222,14 +1222,14 @@
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         true,
-        false,
         true,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -1250,8 +1250,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -1446,14 +1446,14 @@
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         true,
-        false,
         true,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -1474,8 +1474,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -1674,10 +1674,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -1698,8 +1698,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -1898,10 +1898,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -1922,8 +1922,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -2122,10 +2122,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -2146,8 +2146,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -2346,10 +2346,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -2370,8 +2370,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -2570,10 +2570,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -2594,8 +2594,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -2794,10 +2794,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -2818,8 +2818,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -3018,10 +3018,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -3042,8 +3042,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -3242,10 +3242,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -3266,8 +3266,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -3466,10 +3466,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -3490,8 +3490,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -3686,14 +3686,14 @@
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         true,
-        false,
         true,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -3714,8 +3714,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        1
       ],
       "expanded_mask": [
         true,
@@ -3910,14 +3910,14 @@
         true,
         false,
         false,
-        false,
+        true,
         true,
         false,
         true,
-        false,
         true,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -3938,8 +3938,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -4138,10 +4138,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -4162,8 +4162,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -4362,10 +4362,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -4386,8 +4386,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -4586,10 +4586,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -4610,8 +4610,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -4810,10 +4810,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -4834,8 +4834,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -5034,10 +5034,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -5058,8 +5058,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -5258,10 +5258,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -5282,8 +5282,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -5482,10 +5482,10 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     },
     {
@@ -5506,8 +5506,8 @@
         4,
         3,
         4,
-        2,
-        3
+        1,
+        2
       ],
       "expanded_mask": [
         true,
@@ -5706,11 +5706,29 @@
         true,
         false,
         true,
-        false,
+        true,
         true,
         false,
-        false
+        true
       ]
     }
-  ]
+  ],
+  "stage2_meta": {
+    "zone_l1_threshold": 0.02,
+    "peak_l1_threshold": 0.08,
+    "seed": 0,
+    "threshold_mode": "blockwise_quantile",
+    "threshold_config_path": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_output_ldm/src_K15_sw3_lam0.5/01_blockwise_threshold/stage2_thresholds_blockwise.json",
+    "cache_runtime_overrides": {
+      "variant_label": "baseline",
+      "force_full_prefix_steps": 0,
+      "force_full_runtime_blocks_effective": [],
+      "safety_first_input_block": false,
+      "first_input_runtime_block_name": "encoder_layer_0",
+      "must_reapply_same_runtime_overrides_for_sampling": "false",
+      "refined_json_expanded_mask_is_algorithm_only": "true",
+      "diagnostics_cache_pass_scheduler_field": "cache_scheduler_effective_for_cache_pass",
+      "interpretation": "Safety overrides apply only to cache diagnostic pass (runtime union). stage2_refined_scheduler_config.json masks are Stage2 refine results unless merged elsewhere."
+    }
+  }
 }
