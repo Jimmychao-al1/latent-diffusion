@@ -19,6 +19,7 @@ Stage2 reads Stage1 `scheduler_config.json`, runs baseline/cache diagnostics, th
 - `build_blockwise_thresholds_ldm.py`
 - `verify_stage2_ldm.py`
 - `run_stage2_full_experiments_ldm.sh`
+- `export_stage2_diagnostics_csv_ldm.py`
 
 ## Default threshold policy
 `build_blockwise_thresholds_ldm.py` defaults are ported from baseline_908030:
@@ -102,3 +103,12 @@ python ldm_S3cache/cache_method/Stage2/verify_stage2_ldm.py \
 python ldm_S3cache/cache_method/Stage2/verify_stage2_ldm.py \
   --threshold-config <out>/01_blockwise_threshold/stage2_thresholds_blockwise.json
 ```
+
+Export diagnostics to one consolidated CSV:
+
+```bash
+python ldm_S3cache/cache_method/Stage2/export_stage2_diagnostics_csv_ldm.py
+```
+
+Default output:
+- `ldm_S3cache/cache_method/Stage2/stage2_output_ldm/csv_exports/stage2_runtime_diagnostics_combined.csv`
