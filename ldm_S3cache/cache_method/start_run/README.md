@@ -1,8 +1,8 @@
-# LDM `start_run` (Stage2 Scheduler FID Entry)
+# start_run (LDM)
 
-本目錄提供 S3-Cache 在 LDM 端的正式 FID 入口，統一 baseline 與 Stage2 scheduler 實驗紀錄。
+Stage2 之後的 LDM 正式 FID 採樣入口，支援 baseline 與 cache scheduler，並輸出 DiffAE 風格 run artifacts。
 
-## 固定規格（不可動）
+## 固定規格
 
 | item | value |
 |---|---|
@@ -10,105 +10,114 @@
 | `eta` | `0` |
 | `seed` | `0` |
 | `batch_size` | `32` |
-| `n_samples` | `5000` (`FID@5K`) |
+| `n_samples` | `5000` |
 | `fid_dims` | `2048` |
 | `dataset_tag` | `ffhq256` |
 
 ## 檔案
 
 - `sample_stage2_cache_scheduler_ldm.py`
-  - `--mode baseline`：原生 LDM，不套 scheduler，且需 `--no_npz`
-  - `--mode cache`：讀 Stage2 refined JSON，掛 runtime cache hook 後採樣
+  - `--mode baseline`：原生 LDM（需 `--no_npz`）
+  - `--mode cache`：載入 Stage2 refined scheduler + runtime cache hook
 - `runFidWithStage2SchedulerLdm.sh`
-  - 固定流程：baseline -> cache，並 append 到同一份結果 JSON
+  - 固定執行：baseline -> cache
+  - 自動產出 per-run artifacts 與 `runs_index.jsonl`
 
-## Loop Index 注意事項（重要）
+## 重要：時間軸對齊
 
-cache 模式的 scheduler 決策使用 **loop index**（`0..199`）：
+cache scheduler 在 LDM 端採用 **loop index** 判定：
 
-- `loop_idx=0` = 第一個 denoise step
-- `loop_idx=199` = 最後一個 denoise step
+- loop index `0..199`
+- `0` 為第一個 denoise step
+- `199` 為最後一個 denoise step
 
-程式內會從 DDIM raw timestep 建立 `raw_t -> loop_idx` 映射，hook 只用 `loop_idx` 比對 scheduler，避免把 raw timestep 當成 scheduler index。
+程式會先建立 `raw_ddim_timestep -> loop_index` 映射，再以 loop index 判定 full/reuse。
 
-## Stage2 Scheduler JSON 路徑慣例
+## Stage2 JSON 路徑慣例
 
 ```
 ldm_S3cache/cache_method/Stage2/stage2_output_ldm/<src>/02_refined_blockwise/stage2_refined_scheduler_config.json
 ```
 
-## 單獨跑 Python
+## 單次執行（Python）
 
-### 1) baseline（必須 `--no_npz`）
+### baseline
 
 ```bash
 python ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py \
   --mode baseline \
   --no_npz \
   --ckpt models/ldm/ffhq256/model.ckpt \
-  --config configs/latent-diffusion/ffhq-ldm-vq-4.yaml \
-  --real_image_dir /path/to/ffhq/images \
+  --config models/ldm/ffhq256/config.yaml \
+  --real_image_dir ffhq-dataset/images1024x1024 \
   --scheduler_name baseline_no_npz \
-  --out_root outputs \
+  --run-output-dir ldm_S3cache/cache_method/start_run/results/fid_5k/$(date +%Y%m%d)/baseline_no_npz/$(date +%m%d_%H)_baseline_no_npz \
+  --runs-index-path ldm_S3cache/cache_method/start_run/results/fid_5k/runs_index.jsonl \
   --results_json results/fid_results_ldm.json
 ```
 
-### 2) cache（Stage2 refined scheduler）
+### cache
 
 ```bash
 python ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py \
   --mode cache \
   --ckpt models/ldm/ffhq256/model.ckpt \
-  --config configs/latent-diffusion/ffhq-ldm-vq-4.yaml \
-  --real_image_dir /path/to/ffhq/images \
+  --config models/ldm/ffhq256/config.yaml \
+  --real_image_dir ffhq-dataset/images1024x1024 \
   --scheduler_json ldm_S3cache/cache_method/Stage2/stage2_output_ldm/src_K15_sw3_lam1.0/02_refined_blockwise/stage2_refined_scheduler_config.json \
   --scheduler_name K15_sw3_lam1.0 \
-  --out_root outputs \
+  --run-output-dir ldm_S3cache/cache_method/start_run/results/fid_5k/$(date +%Y%m%d)/K15_sw3_lam1.0/$(date +%m%d_%H)_K15_sw3_lam1.0 \
+  --runs-index-path ldm_S3cache/cache_method/start_run/results/fid_5k/runs_index.jsonl \
   --results_json results/fid_results_ldm.json
 ```
 
-`--real_image_dir` 與 `--real_lmdb` 二擇一，不能同時提供。
-
-## 一鍵跑 shell
+## 一鍵執行（Shell）
 
 ```bash
 bash ldm_S3cache/cache_method/start_run/runFidWithStage2SchedulerLdm.sh
 ```
 
-腳本流程固定：
-1. baseline (`--mode baseline --no_npz`)
-2. cache (`--mode cache`)
+可用環境變數：
 
-後續要跑多個 scheduler，可直接複製 shell 中 cache block。
+- `CKPT`
+- `CONFIG`
+- `REAL_IMAGE_DIR` / `REAL_LMDB`（二擇一）
+- `SCHEDULER_JSON`
+- `SCHEDULER_NAME`
+- `RESULTS_JSON`
+- `RESULTS_ROOT`
+- `RUNS_INDEX`
+- `FORCE_FULL_PREFIX_STEPS`
+- `FORCE_FULL_RUNTIME_BLOCKS`
+- `SAFETY_FIRST_INPUT_BLOCK=1`
 
-## 輸出與共享結果 JSON
+## 輸出（對齊 DiffAE 風格）
 
-- 生成圖：`outputs/start_run/fid_5k/<timestamp>_<run_label>/gen_images`
-- 真實圖 cache：`outputs/start_run/real_eval_cache_ffhq256_5k`
-- 共享結果：`results/fid_results_ldm.json`（list append）
+每個 run 目錄（`--run-output-dir`）至少包含：
 
-每筆記錄欄位：
+- `run_manifest.json`
+- `summary.json`
+- `detail_stats.json`
+- `run.log`
 
-```json
-{
-  "run_type": "baseline_no_npz | stage2_scheduler",
-  "scheduler_name": "...",
-  "scheduler_json": "abs path or null",
-  "fid": 0.0,
-  "fid_at": "5k",
-  "n_samples": 5000,
-  "dataset_tag": "ffhq256",
-  "ddim_steps": 200,
-  "eta": 0,
-  "seed": 0,
-  "batch_size": 32,
-  "fid_dims": 2048,
-  "no_npz": true,
-  "timestamp": "YYYYmmdd_HHMMSS",
-  "sample_time_min": 0.0,
-  "fid_time_min": 0.0,
-  "gen_dir": "abs path",
-  "eval_dir": "abs path",
-  "ckpt": "abs path"
-}
-```
+cache 模式額外輸出：
+
+- `scheduler_config.snapshot.json`
+- `cache_runtime_overrides_run.json`
+
+全域輸出：
+
+- `results/fid_results_ldm.json`（共享 list，append）
+- `runs_index.jsonl`（每行一筆精簡結果）
+
+## 如何判斷 cache 是否真的套用
+
+看 `summary.json` 與 `detail_stats.json`：
+
+- `cache_hook_cache_hits`
+- `cache_hook_recompute_hits`
+- `cache_hook_cache_ratio`
+- `hook_stats.per_block_cache_hits`
+
+若 `cache_hook_cache_hits > 0`，代表 scheduler 已實際參與 runtime 決策。  
+但請注意：目前 hook 方式不會跳過 layer forward 計算，因此推論時間可能與 baseline 接近。

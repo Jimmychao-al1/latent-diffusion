@@ -1,0 +1,17 @@
+{
+  "run_id": "20260420T081300__baseline_no_npz",
+  "hook_stats": {},
+  "per_block_recompute_count": {},
+  "per_block_reuse_count": {},
+  "per_zone_recompute_stats": {},
+  "per_zone_adjustment_stats": {},
+  "raw_estimation_stats": {
+    "full_compute_ratio": null,
+    "total_full_compute_count": null,
+    "total_cache_reuse_count": null,
+    "full_compute_blocks_count": null,
+    "T": null,
+    "num_blocks": null,
+    "per_block_recompute_ratio": {}
+  }
+}

@@ -323,7 +323,8 @@ def export_real_from_image_dir(real_image_dir, eval_dir, num_images, img_size, r
         A.CenterCrop(height=img_size, width=img_size),
     ])
 
-    for index, src_path in enumerate(trange(len(selected_paths), desc="Exporting real images")):
+    for index in trange(len(selected_paths), desc="Exporting real images"):
+        src_path = selected_paths[index]
         img = Image.open(src_path).convert("RGB")
         img = np.array(img).astype(np.uint8)
         img = preprocessor(image=img)["image"]

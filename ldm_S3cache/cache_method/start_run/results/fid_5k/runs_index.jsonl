@@ -1,0 +1,1 @@
+{"rid": "0420081300__baseline_no_npz", "FID@5K": 11.84, "d": "20260420", "sch": "baseline_no_npz", "r": null, "seed": 0, "out": "ldm_S3cache/cache_method/start_run/results/fid_5k/20260420/baseline_no_npz/0420_08_baseline_no_npz", "sum": "ldm_S3cache/cache_method/start_run/results/fid_5k/20260420/baseline_no_npz/0420_08_baseline_no_npz/summary.json", "st": "success"}
