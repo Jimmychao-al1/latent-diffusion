@@ -120,4 +120,4 @@ cache 模式額外輸出：
 - `hook_stats.per_block_cache_hits`
 
 若 `cache_hook_cache_hits > 0`，代表 scheduler 已實際參與 runtime 決策。  
-但請注意：目前 hook 方式不會跳過 layer forward 計算，因此推論時間可能與 baseline 接近。
+目前實作為 `cache_execution_mode=true_skip`：reuse 時會在 block 前直接回傳 cached tensor，真正跳過該 block 計算。

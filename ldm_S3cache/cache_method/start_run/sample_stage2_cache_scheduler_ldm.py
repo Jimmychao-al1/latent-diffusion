@@ -435,11 +435,11 @@ def _runtime_to_unet_path(runtime_name: str) -> str:
 
 class Stage2LoopIndexCacheHook:
     """
-    Runtime cache hook using loop-index decisions.
+    Runtime cache hook using loop-index decisions (true skip mode).
 
     Note:
-    - This hook replaces outputs with cached tensors on reuse steps.
-    - It does not skip underlying layer forward compute cost.
+    - Reuse step returns cached tensor before calling target block forward.
+    - Therefore underlying block compute is truly skipped on bypass path.
     """
 
     def __init__(
@@ -462,6 +462,9 @@ class Stage2LoopIndexCacheHook:
         self._cached: Dict[str, Optional[torch.Tensor]] = {
             rt: None for rt in RUNTIME_LAYER_NAMES
         }
+        self._target_modules: Dict[str, torch.nn.Module] = {}
+        self._orig_forward_by_runtime: Dict[str, Any] = {}
+        self._had_instance_forward_attr: Dict[str, bool] = {}
         self._current_loop_idx: Optional[int] = None
         self._current_raw_t: Optional[int] = None
         self._last_loop_idx: Optional[int] = None
@@ -469,10 +472,13 @@ class Stage2LoopIndexCacheHook:
         self._warned_raw_t: Set[int] = set()
         self._fallback_count = 0
 
-        self.cache_hits = 0
+        self.cache_hits = 0  # alias of bypass_hits for backward compatibility
         self.recompute_hits = 0
-        self.per_block_cache_hits: Dict[str, int] = {rt: 0 for rt in RUNTIME_LAYER_NAMES}
+        self.bypass_hits = 0
+        self.per_block_cache_hits: Dict[str, int] = {rt: 0 for rt in RUNTIME_LAYER_NAMES}  # alias
+        self.per_block_bypass_hits: Dict[str, int] = {rt: 0 for rt in RUNTIME_LAYER_NAMES}
         self.per_block_recompute_hits: Dict[str, int] = {rt: 0 for rt in RUNTIME_LAYER_NAMES}
+        self.forced_recompute_due_to_empty_cache = 0
 
     def _resolve_module(self, path: str) -> torch.nn.Module:
         cur: Any = self.unet
@@ -519,28 +525,38 @@ class Stage2LoopIndexCacheHook:
                 self._cached[rt] = None
         self._last_loop_idx = self._current_loop_idx
 
-    def _make_block_hook(self, runtime_name: str):
-        def _hook(module: torch.nn.Module, inputs: Tuple[Any, ...], output: Any) -> Any:
-            del module, inputs
-            if not torch.is_tensor(output):
-                return output
+    def _make_true_skip_forward(self, runtime_name: str, orig_forward: Any):
+        def _forward(*args: Any, **kwargs: Any) -> Any:
             loop_idx = self._current_loop_idx
-            if loop_idx is None:
-                return output
             cached = self._cached[runtime_name]
-            should_recompute = (
-                (loop_idx in self.recompute_loop_steps_by_runtime[runtime_name]) or (cached is None)
-            )
-            if should_recompute:
+            if loop_idx is None:
+                # Outside expected denoise path: fallback to original compute.
+                y = orig_forward(*args, **kwargs)
+                if torch.is_tensor(y):
+                    self._cached[runtime_name] = y.detach()
                 self.recompute_hits += 1
                 self.per_block_recompute_hits[runtime_name] += 1
-                self._cached[runtime_name] = output.detach()
-                return output
+                return y
+
+            scheduled_recompute = loop_idx in self.recompute_loop_steps_by_runtime[runtime_name]
+            should_recompute = scheduled_recompute or (cached is None)
+            if should_recompute:
+                if (not scheduled_recompute) and (cached is None):
+                    self.forced_recompute_due_to_empty_cache += 1
+                y = orig_forward(*args, **kwargs)
+                if torch.is_tensor(y):
+                    self._cached[runtime_name] = y.detach()
+                self.recompute_hits += 1
+                self.per_block_recompute_hits[runtime_name] += 1
+                return y
+
+            self.bypass_hits += 1
             self.cache_hits += 1
+            self.per_block_bypass_hits[runtime_name] += 1
             self.per_block_cache_hits[runtime_name] += 1
             return cached.clone()
 
-        return _hook
+        return _forward
 
     def __enter__(self) -> "Stage2LoopIndexCacheHook":
         if set(self.recompute_loop_steps_by_runtime.keys()) != set(RUNTIME_LAYER_NAMES):
@@ -552,7 +568,11 @@ class Stage2LoopIndexCacheHook:
             mod = self._resolve_module(_runtime_to_unet_path(rt))
             if not isinstance(mod, TimestepEmbedSequential):
                 raise TypeError(f"{rt} resolved module is not TimestepEmbedSequential")
-            self._hooks.append(mod.register_forward_hook(self._make_block_hook(rt)))
+            self._target_modules[rt] = mod
+            self._had_instance_forward_attr[rt] = "forward" in mod.__dict__
+            orig_forward = mod.forward
+            self._orig_forward_by_runtime[rt] = orig_forward
+            mod.forward = self._make_true_skip_forward(rt, orig_forward)  # type: ignore[method-assign]
         return self
 
     def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
@@ -560,19 +580,35 @@ class Stage2LoopIndexCacheHook:
         for h in self._hooks:
             h.remove()
         self._hooks.clear()
+        for rt, mod in self._target_modules.items():
+            if self._had_instance_forward_attr.get(rt, False):
+                mod.forward = self._orig_forward_by_runtime[rt]  # type: ignore[method-assign]
+            else:
+                # restore class-defined forward descriptor
+                if "forward" in mod.__dict__:
+                    delattr(mod, "forward")
+        self._target_modules.clear()
+        self._orig_forward_by_runtime.clear()
+        self._had_instance_forward_attr.clear()
         for rt in self._cached:
             self._cached[rt] = None
 
     def stats(self) -> Dict[str, Any]:
-        total = int(self.cache_hits + self.recompute_hits)
+        total = int(self.bypass_hits + self.recompute_hits)
         return {
+            "cache_execution_mode": "true_skip",
             "cache_hits": int(self.cache_hits),
+            "bypass_hits": int(self.bypass_hits),
             "recompute_hits": int(self.recompute_hits),
-            "total_hook_calls": total,
-            "cache_ratio": float(self.cache_hits / total) if total > 0 else 0.0,
+            "total_block_calls": total,
+            "total_hook_calls": total,  # backward-compatible alias
+            "cache_ratio": float(self.bypass_hits / total) if total > 0 else 0.0,
+            "bypass_ratio": float(self.bypass_hits / total) if total > 0 else 0.0,
             "recompute_ratio": float(self.recompute_hits / total) if total > 0 else 0.0,
             "per_block_cache_hits": dict(self.per_block_cache_hits),
+            "per_block_bypass_hits": dict(self.per_block_bypass_hits),
             "per_block_recompute_hits": dict(self.per_block_recompute_hits),
+            "forced_recompute_due_to_empty_cache": int(self.forced_recompute_due_to_empty_cache),
             "raw_t_fallback_count": int(self._fallback_count),
         }
 
@@ -842,6 +878,7 @@ def main() -> None:
         "run_id": run_manifest["run_id"],
         "status": "success",
         "mode": args.mode,
+        "cache_execution_mode": hook_stats.get("cache_execution_mode"),
         "scheduler_name": scheduler_name,
         "scheduler_config_path": run_manifest.get("scheduler_config_path"),
         "force-prefix": "T" if int(args.force_full_prefix_steps) > 0 else "F",
@@ -858,8 +895,11 @@ def main() -> None:
         "zone_adjustments_count": stage2_sidecar_stats.get("zone_adjustments_count"),
         "peak_adjustments_count": stage2_sidecar_stats.get("peak_adjustments_count"),
         "cache_hook_cache_hits": hook_stats.get("cache_hits"),
+        "cache_bypass_hits": hook_stats.get("bypass_hits"),
         "cache_hook_recompute_hits": hook_stats.get("recompute_hits"),
         "cache_hook_cache_ratio": hook_stats.get("cache_ratio"),
+        "cache_bypass_ratio": hook_stats.get("bypass_ratio"),
+        "forced_recompute_due_to_empty_cache": hook_stats.get("forced_recompute_due_to_empty_cache"),
         "start_time": run_manifest["start_time"],
         "end_time": run_manifest["end_time"],
         "duration_sec": run_manifest["duration_sec"],
@@ -869,7 +909,9 @@ def main() -> None:
 
     detail_stats_obj: Dict[str, Any] = {
         "run_id": run_manifest["run_id"],
+        "cache_execution_mode": hook_stats.get("cache_execution_mode"),
         "hook_stats": hook_stats,
+        "per_block_bypass_hits": hook_stats.get("per_block_bypass_hits", {}),
         "per_block_recompute_count": sched_stats.get("per_block_recompute_count", {}),
         "per_block_reuse_count": sched_stats.get("per_block_reuse_count", {}),
         "per_zone_recompute_stats": sched_stats.get("per_zone_recompute_stats", {}),
@@ -931,7 +973,10 @@ def main() -> None:
         "ckpt": str(ckpt_path.resolve()),
         "run_output_dir": str(run_output_dir.resolve()),
         "cache_hook_cache_hits": hook_stats.get("cache_hits"),
+        "cache_bypass_hits": hook_stats.get("bypass_hits"),
         "cache_hook_recompute_hits": hook_stats.get("recompute_hits"),
+        "cache_bypass_ratio": hook_stats.get("bypass_ratio"),
+        "forced_recompute_due_to_empty_cache": hook_stats.get("forced_recompute_due_to_empty_cache"),
     }
     _append_json_list(results_json, record)
 
