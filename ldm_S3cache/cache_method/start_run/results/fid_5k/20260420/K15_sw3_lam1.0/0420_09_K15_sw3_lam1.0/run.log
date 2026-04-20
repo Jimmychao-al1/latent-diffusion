@@ -3,3 +3,6 @@
 2026-04-20 09:19:16,211 [INFO] [LDM-start_run] eval_dir=/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k
 2026-04-20 09:19:18,431 [INFO] [LDM-start_run] scheduler_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_output_ldm/src_K15_sw3_lam1.0/02_refined_blockwise/stage2_refined_scheduler_config.json
 2026-04-20 09:19:18,431 [INFO] [LDM-start_run] scheduler semantics: loop index 0..199
+2026-04-20 10:23:33,030 [INFO] [LDM-start_run] FID=11.710381
+2026-04-20 10:23:33,030 [INFO] [LDM-start_run] results_json=/home/jimmy/latent-diffusion/results/fid_results_ldm.json
+2026-04-20 10:23:33,030 [INFO] [LDM-start_run] run_output_dir=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_5k/20260420/K15_sw3_lam1.0/0420_09_K15_sw3_lam1.0

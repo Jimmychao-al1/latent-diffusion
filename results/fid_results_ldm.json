@@ -64,5 +64,29 @@
     "run_output_dir": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_5k/20260420/baseline_no_npz/0420_08_baseline_no_npz",
     "cache_hook_cache_hits": null,
     "cache_hook_recompute_hits": null
+  },
+  {
+    "run_type": "stage2_scheduler",
+    "scheduler_name": "K15_sw3_lam1.0",
+    "scheduler_json": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_output_ldm/src_K15_sw3_lam1.0/02_refined_blockwise/stage2_refined_scheduler_config.json",
+    "fid": 11.710381342859705,
+    "fid_at": "5k",
+    "n_samples": 5000,
+    "dataset_tag": "ffhq256",
+    "ddim_steps": 200,
+    "eta": 0.0,
+    "seed": 0,
+    "batch_size": 32,
+    "fid_dims": 2048,
+    "no_npz": false,
+    "timestamp": "20260420_091916",
+    "sample_time_min": 63.75628147919973,
+    "fid_time_min": 0.4869401852289836,
+    "gen_dir": "/home/jimmy/latent-diffusion/outputs/start_run/fid_5k/20260420_091916_stage2_K15_sw3_lam1.0/gen_images",
+    "eval_dir": "/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k",
+    "ckpt": "/home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt",
+    "run_output_dir": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_5k/20260420/K15_sw3_lam1.0/0420_09_K15_sw3_lam1.0",
+    "cache_hook_cache_hits": 563473,
+    "cache_hook_recompute_hits": 221527
   }
 ]
