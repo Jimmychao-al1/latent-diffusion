@@ -10,7 +10,7 @@ Stage2 之後的 LDM 正式 FID 採樣入口，支援 baseline 與 cache schedul
 | `eta` | `0` |
 | `seed` | `0` |
 | `batch_size` | `32` |
-| `n_samples` | `5000` |
+| `n_samples` | `5000`（可切 `50000`） |
 | `fid_dims` | `2048` |
 | `dataset_tag` | `ffhq256` |
 
@@ -87,6 +87,7 @@ bash ldm_S3cache/cache_method/start_run/runFidWithStage2SchedulerLdm.sh
 - `RESULTS_JSON`
 - `RESULTS_ROOT`
 - `RUNS_INDEX`
+- `N_SAMPLES`（`5000` or `50000`）
 - `FORCE_FULL_PREFIX_STEPS`
 - `FORCE_FULL_RUNTIME_BLOCKS`
 - `SAFETY_FIRST_INPUT_BLOCK=1`
@@ -121,3 +122,8 @@ cache 模式額外輸出：
 
 若 `cache_hook_cache_hits > 0`，代表 scheduler 已實際參與 runtime 決策。  
 目前實作為 `cache_execution_mode=true_skip`：reuse 時會在 block 前直接回傳 cached tensor，真正跳過該 block 計算。
+50K 範例：
+
+```bash
+N_SAMPLES=50000 bash ldm_S3cache/cache_method/start_run/runFidWithStage2SchedulerLdm.sh
+```

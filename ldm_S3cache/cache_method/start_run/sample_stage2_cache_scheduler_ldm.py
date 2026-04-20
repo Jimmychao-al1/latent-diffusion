@@ -69,15 +69,14 @@ from scripts.sample_diffusion import (
 )
 
 
-# Fixed formal experiment spec
+# Fixed formal experiment spec (except n_samples supports 5K/50K switch)
 DDIM_STEPS = 200
 ETA = 0.0
 SEED = 0
 BATCH_SIZE = 32
-N_SAMPLES = 5000
+DEFAULT_N_SAMPLES = 5000
 FID_DIMS = 2048
 DATASET_TAG = "ffhq256"
-FID_AT = "5k"
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 LOGGER = logging.getLogger("LDMStartRun")
@@ -150,6 +149,12 @@ def _fid_index_key(num_images: int) -> str:
     if num_images == 50000:
         return "FID@50K"
     return f"FID@{num_images}"
+
+
+def _format_fid_at(num_images: int) -> str:
+    if num_images % 1000 == 0:
+        return f"{num_images // 1000}k"
+    return str(num_images)
 
 
 def _round_fid_index(x: Optional[float]) -> Optional[float]:
@@ -658,6 +663,13 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--scheduler_name", type=str, default="unknown")
     p.add_argument("--out_root", type=str, default="outputs")
     p.add_argument("--results_json", type=str, default="results/fid_results_ldm.json")
+    p.add_argument(
+        "--n_samples",
+        type=int,
+        default=DEFAULT_N_SAMPLES,
+        choices=[5000, 50000],
+        help="FID sample count. Supported: 5000 (5K), 50000 (50K).",
+    )
 
     p.add_argument("--force-full-prefix-steps", type=_nonnegative_int, default=0)
     p.add_argument("--force-full-runtime-blocks", type=str, default="")
@@ -681,6 +693,10 @@ def main() -> None:
     if args.mode == "cache" and not args.scheduler_json:
         raise ValueError("Cache mode requires --scheduler_json")
 
+    n_samples = int(args.n_samples)
+    fid_at = _format_fid_at(n_samples)
+    fid_metric_key = f"fid_{fid_at}"
+
     _seed_all(SEED)
 
     ckpt_path = _resolve_repo_path(args.ckpt)
@@ -703,8 +719,8 @@ def main() -> None:
         run_output_dir = out_root / "start_run" / "results" / start_dt.strftime("%Y%m%d") / scheduler_name / f"{start_dt.strftime('%m%d_%H')}_{scheduler_name}"
     run_output_dir.mkdir(parents=True, exist_ok=True)
 
-    gen_dir = out_root / "start_run" / f"fid_{FID_AT}" / f"{timestamp}_{run_label}" / "gen_images"
-    eval_dir = out_root / "start_run" / f"real_eval_cache_{DATASET_TAG}_{FID_AT}"
+    gen_dir = out_root / "start_run" / f"fid_{fid_at}" / f"{timestamp}_{run_label}" / "gen_images"
+    eval_dir = out_root / "start_run" / f"real_eval_cache_{DATASET_TAG}_{fid_at}"
     if gen_dir.exists():
         shutil.rmtree(gen_dir)
     gen_dir.mkdir(parents=True, exist_ok=True)
@@ -728,7 +744,7 @@ def main() -> None:
         "mode": args.mode,
         "scheduler_name": scheduler_name,
         "scheduler_config_path": None,
-        "num_images": N_SAMPLES,
+        "num_images": n_samples,
         "seed": SEED,
         "script_path": str(Path(__file__).resolve()),
         "command_argv": sys.argv[:],
@@ -742,7 +758,7 @@ def main() -> None:
     sample_time_min = 0.0
     fid_time_min = 0.0
     try:
-        LOGGER.info("mode=%s dataset=%s n_samples=%s", args.mode, DATASET_TAG, N_SAMPLES)
+        LOGGER.info("mode=%s dataset=%s n_samples=%s", args.mode, DATASET_TAG, n_samples)
         LOGGER.info("gen_dir=%s", gen_dir)
         LOGGER.info("eval_dir=%s", eval_dir)
 
@@ -779,7 +795,7 @@ def main() -> None:
                     vanilla=False,
                     custom_steps=DDIM_STEPS,
                     eta=ETA,
-                    n_samples=N_SAMPLES,
+                    n_samples=n_samples,
                     nplog=None,
                 )
                 hook_stats = hook.stats()
@@ -791,7 +807,7 @@ def main() -> None:
                 vanilla=False,
                 custom_steps=DDIM_STEPS,
                 eta=ETA,
-                n_samples=N_SAMPLES,
+                n_samples=n_samples,
                 nplog=None,
             )
         sample_time_min = (time.time() - t0) / 60.0
@@ -799,14 +815,14 @@ def main() -> None:
         t1 = time.time()
         _prepare_real_images(
             eval_dir=eval_dir,
-            n_samples=N_SAMPLES,
+            n_samples=n_samples,
             real_image_dir=args.real_image_dir,
             real_lmdb=args.real_lmdb,
         )
         gen_count = _count_pngs(gen_dir)
-        if gen_count != N_SAMPLES:
+        if gen_count != n_samples:
             raise RuntimeError(
-                f"generated image count mismatch: expected {N_SAMPLES}, got {gen_count}"
+                f"generated image count mismatch: expected {n_samples}, got {gen_count}"
             )
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         score = float(compute_fid(str(eval_dir), str(gen_dir), BATCH_SIZE, device, FID_DIMS))
@@ -825,7 +841,7 @@ def main() -> None:
         )
         _write_json(run_output_dir / "run_manifest.json", run_manifest)
         if runs_index_path is not None:
-            fk = _fid_index_key(N_SAMPLES)
+            fk = _fid_index_key(n_samples)
             _append_runs_index(
                 runs_index_path,
                 {
@@ -883,9 +899,10 @@ def main() -> None:
         "scheduler_config_path": run_manifest.get("scheduler_config_path"),
         "force-prefix": "T" if int(args.force_full_prefix_steps) > 0 else "F",
         "force-full-prefix-steps": int(args.force_full_prefix_steps),
-        "num_images": N_SAMPLES,
+        "num_images": n_samples,
         "seed": SEED,
-        "fid_5k": score,
+        fid_metric_key: score,
+        "fid_at": fid_at,
         "sample_time_min": float(sample_time_min),
         "fid_time_min": float(fid_time_min),
         "full_compute_ratio": sched_stats.get("full_compute_ratio"),
@@ -934,7 +951,7 @@ def main() -> None:
     _write_json(run_output_dir / "detail_stats.json", detail_stats_obj)
 
     if runs_index_path is not None:
-        fk = _fid_index_key(N_SAMPLES)
+        fk = _fid_index_key(n_samples)
         _append_runs_index(
             runs_index_path,
             {
@@ -956,8 +973,8 @@ def main() -> None:
         "scheduler_name": scheduler_name,
         "scheduler_json": str(scheduler_json_abs) if scheduler_json_abs is not None else None,
         "fid": score,
-        "fid_at": FID_AT,
-        "n_samples": N_SAMPLES,
+        "fid_at": fid_at,
+        "n_samples": n_samples,
         "dataset_tag": DATASET_TAG,
         "ddim_steps": DDIM_STEPS,
         "eta": ETA,

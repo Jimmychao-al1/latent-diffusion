@@ -13,7 +13,13 @@ REAL_LMDB="${REAL_LMDB:-}"
 
 OUT_ROOT="${OUT_ROOT:-outputs}"
 RESULTS_JSON="${RESULTS_JSON:-results/fid_results_ldm.json}"
-RESULTS_ROOT="${RESULTS_ROOT:-ldm_S3cache/cache_method/start_run/results/fid_5k}"
+N_SAMPLES="${N_SAMPLES:-5000}" # 5000 or 50000
+if [[ "${N_SAMPLES}" == "50000" ]]; then
+  FID_TAG="50k"
+else
+  FID_TAG="5k"
+fi
+RESULTS_ROOT="${RESULTS_ROOT:-ldm_S3cache/cache_method/start_run/results/fid_${FID_TAG}}"
 RUNS_INDEX="${RUNS_INDEX:-${RESULTS_ROOT}/runs_index.jsonl}"
 
 # Stage2 refined scheduler (cache run)
@@ -54,6 +60,7 @@ COMMON_ARGS=(
   --config "${CONFIG}"
   --out_root "${OUT_ROOT}"
   --results_json "${RESULTS_JSON}"
+  --n_samples "${N_SAMPLES}"
 )
 if [[ -n "${REAL_IMAGE_DIR}" ]]; then
   COMMON_ARGS+=( --real_image_dir "${REAL_IMAGE_DIR}" )
