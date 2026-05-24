@@ -5,6 +5,9 @@
   "num_layers": 120,
   "num_quantized_layers": 0,
   "bytes_per_element": 4,
+  "weight_bytes_per_element": 4,
+  "activation_bytes_per_element": 4,
+  "cache_output_bytes_per_element": 4,
   "baseline_bytes": 253456512000,
   "cached_bytes": 71137479168,
   "reduction_ratio": 0.7193306314891605,
@@ -12,6 +15,7 @@
   "cached_bytes_per_step": 355687395.84,
   "global_cim_max_dim": 16128,
   "global_cim_max_array_size": 14450688,
+  "s3_cache_storage_bytes": 45817856,
   "baseline_readable": "236.0498 GB (253,456,512,000 B)",
   "baseline_KB": 247516125.0,
   "baseline_MB": 241714.9658203125,
@@ -27,5 +31,12 @@
   "cached_per_step_readable": "339.2099 MB (355,687,395 B)",
   "cached_per_step_KB": 347350.9725,
   "cached_per_step_MB": 339.2099340820312,
-  "cached_per_step_GB": 0.3312597012519836
+  "cached_per_step_GB": 0.3312597012519836,
+  "global_cim_max_array_size_readable": "14,450,688 cells",
+  "global_cim_max_array_size_K": 14450.688,
+  "global_cim_max_array_size_M": 14.450688,
+  "s3_cache_storage_readable": "43.6953 MB (45,817,856 B)",
+  "s3_cache_storage_KB": 44744.0,
+  "s3_cache_storage_MB": 43.6953125,
+  "s3_cache_storage_GB": 0.04267120361328125
 }
