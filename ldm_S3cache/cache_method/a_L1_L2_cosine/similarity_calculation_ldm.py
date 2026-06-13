@@ -528,6 +528,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="If set, delete generated output directory before writing new images.",
     )
+    p.add_argument(
+        "--cali_ckpt",
+        type=str,
+        default=None,
+        help="TFMQ-DM calibration checkpoint for Q-LDM mode",
+    )
     return p.parse_args()
 
 
@@ -563,6 +569,10 @@ def main() -> None:
     logdir, ckpt = _resolve_resume_to_logdir_and_ckpt(args.resume)
     config = _load_config(logdir)
     model = _load_model(config, ckpt)
+    if args.cali_ckpt:
+        from Stage2.stage2_scheduler_adapter_ldm import setup_quantized_ldm
+
+        model = setup_quantized_ldm(model, args.cali_ckpt)
 
     base_cls = _load_similarity_collector_base(_resolve_repo_path(args.base_collector_py))
     LDMSimilarityCollector = _build_ldm_collector_class(base_cls)

@@ -56,6 +56,86 @@ def get_unet_for_hook(model: Any) -> Any:
     )
 
 
+def setup_quantized_ldm(model: Any, cali_ckpt_path: str | Path) -> Any:
+    """Wrap FP LDM with TFMQ-DM QuantModel, load calibration checkpoint, inject FSC.
+
+    Call after standard FP model loading (load_state_dict + cuda + eval).
+
+    Args:
+        model: LatentDiffusion with FP weights loaded on CUDA.
+        cali_ckpt_path: Path to TFMQ-DM calibration checkpoint (.pth).
+
+    Returns:
+        Same model with diffusion_model replaced by QuantModel and FSC pre-hook
+        registered on DiffusionWrapper.
+    """
+    import torch
+    from quant.calibration import load_cali_model
+    from quant.quant_layer import QMODE, Scaler
+    from quant.quant_model import QuantModel
+
+    cali_ckpt_path = str(cali_ckpt_path)
+    wrapper = model.model
+
+    setattr(wrapper.diffusion_model, "split", True)
+
+    wq_params = {"bits": 8, "channel_wise": True, "scaler": Scaler.MINMAX}
+    aq_params = {
+        "bits": 8,
+        "channel_wise": False,
+        "scaler": Scaler.MINMAX,
+        "leaf_param": True,
+    }
+
+    qnn = QuantModel(
+        model=wrapper.diffusion_model,
+        wq_params=wq_params,
+        aq_params=aq_params,
+        cali=False,
+        aq_mode=[QMODE.NORMAL.value, QMODE.QDIFF.value],
+    )
+    qnn.cuda().eval()
+
+    in_ch = qnn.model.in_channels
+    img_sz = qnn.model.image_size
+    dummy_x = torch.randn(1, in_ch, img_sz, img_sz).cuda()
+    dummy_t = torch.randint(0, 1000, (1,)).cuda()
+    load_cali_model(qnn, (dummy_x, dummy_t), use_aq=True, path=cali_ckpt_path)
+
+    wrapper.diffusion_model = qnn
+
+    cali_ckpt = torch.load(cali_ckpt_path, map_location="cpu")
+    act_keys = sorted(k for k in cali_ckpt if k.startswith("act_"))
+    n_act = len(act_keys)
+    if n_act < 1:
+        raise ValueError(f"No act_* keys found in calibration checkpoint: {cali_ckpt_path}")
+
+    wrapper.ckpt = cali_ckpt
+    wrapper.tot = 1000 // n_act
+    wrapper.t_max = n_act - 1
+
+    def _fsc_pre_hook(module: Any, args: Tuple[Any, ...]) -> None:
+        t = args[1]
+        if hasattr(module, "tot"):
+            idx = int(module.t_max - (t[0].item() - 1) // module.tot)
+            key = f"act_{idx}"
+            if key in module.ckpt:
+                module.diffusion_model.load_state_dict(module.ckpt[key], strict=False)
+
+    wrapper.register_forward_pre_hook(_fsc_pre_hook)
+
+    # QuantModel renames modules under diffusion_model; EMA shadow keys no longer match.
+    # Checkpoint weights are already loaded before quantization.
+    if hasattr(model, "use_ema"):
+        model.use_ema = False
+
+    print(
+        f"[Q-LDM] QuantModel loaded: {n_act} FSC intervals, "
+        f"tot={wrapper.tot}, t_max={wrapper.t_max}"
+    )
+    return model
+
+
 def load_stage1_scheduler_config(path: str | Path) -> Dict[str, Any]:
     """讀取 Stage1 scheduler_config.json。"""
     p = Path(path)

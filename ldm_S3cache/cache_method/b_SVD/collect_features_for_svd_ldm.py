@@ -358,6 +358,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--skip_correlation", action="store_true")
 
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument(
+        "--cali_ckpt",
+        type=str,
+        default=None,
+        help="TFMQ-DM calibration checkpoint for Q-LDM mode",
+    )
     return p.parse_args()
 
 
@@ -375,6 +381,10 @@ def main() -> None:
     logdir, ckpt = _resolve_resume_to_logdir_and_ckpt(args.resume)
     config = _load_config(logdir)
     model = _load_model(config, ckpt)
+    if args.cali_ckpt:
+        from Stage2.stage2_scheduler_adapter_ldm import setup_quantized_ldm
+
+        model = setup_quantized_ldm(model, args.cali_ckpt)
 
     output_root = _resolve_repo_path(args.svd_output_root)
     t_root = output_root / f"T_{args.num_steps}"

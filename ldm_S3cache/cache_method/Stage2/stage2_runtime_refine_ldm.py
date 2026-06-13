@@ -631,6 +631,7 @@ def run_stage2_refine_ldm(
     eval_num_images: int = 8,
     eval_chunk_size: Optional[int] = 1,
     eta: float = 0.0,
+    cali_ckpt: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Public function run_stage2_refine_ldm."""
     _configure_stage2_logging()
@@ -681,6 +682,10 @@ def run_stage2_refine_ldm(
     logdir, ckpt = _resolve_resume_to_logdir_and_ckpt(resume)
     config = _load_config(logdir)
     model = _load_model(config, ckpt, device=device)
+    if cali_ckpt:
+        from Stage2.stage2_scheduler_adapter_ldm import setup_quantized_ldm
+
+        model = setup_quantized_ldm(model, cali_ckpt)
     sampler = DDIMSampler(model)
     sampler.make_schedule(ddim_num_steps=T, ddim_eta=eta, verbose=False)
     ddim_desc = [int(x) for x in np.flip(sampler.ddim_timesteps)]
@@ -1069,6 +1074,12 @@ def main() -> None:
     g_model.add_argument("--resume", type=str, default="models/ldm/ffhq256/model.ckpt")
     g_model.add_argument("--block_map", type=str, default="ldm_block_map_ffhq256.json")
     g_model.add_argument("--eta", type=float, default=0.0)
+    g_model.add_argument(
+        "--cali_ckpt",
+        type=str,
+        default=None,
+        help="TFMQ-DM calibration checkpoint for Q-LDM mode",
+    )
 
     g_eval = p.add_argument_group("Diagnostics eval")
     g_eval.add_argument("--eval-num-images", type=_nonnegative_int, default=8)
@@ -1109,6 +1120,7 @@ def main() -> None:
         eval_num_images=int(args.eval_num_images),
         eval_chunk_size=int(args.eval_chunk_size),
         eta=float(args.eta),
+        cali_ckpt=args.cali_ckpt,
     )
 
 

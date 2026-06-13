@@ -58,6 +58,7 @@ from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
     cache_scheduler_to_jsonable,
     get_unet_for_hook,
     load_stage1_scheduler_config,
+    setup_quantized_ldm,
     stage1_block_to_runtime_block,
     stage1_mask_to_runtime_cache_scheduler,
     validate_stage1_scheduler_config,
@@ -680,6 +681,12 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--run-output-dir", type=str, default=None)
     p.add_argument("--runs-index-path", type=str, default=None)
     p.add_argument("--log_file", type=str, default=None)
+    p.add_argument(
+        "--cali_ckpt",
+        type=str,
+        default=None,
+        help="TFMQ-DM calibration checkpoint for Q-LDM mode",
+    )
     return p
 
 
@@ -764,6 +771,8 @@ def main() -> None:
         LOGGER.info("eval_dir=%s", eval_dir)
 
         model = _load_model(config_path, ckpt_path)
+        if args.cali_ckpt:
+            model = setup_quantized_ldm(model, args.cali_ckpt)
         raw_t_to_loop_idx = _build_raw_t_to_loop_idx(model, DDIM_STEPS, ETA)
 
         if args.mode == "cache":
