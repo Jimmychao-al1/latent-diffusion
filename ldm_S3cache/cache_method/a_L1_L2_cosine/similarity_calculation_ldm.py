@@ -50,6 +50,9 @@ _bootstrap_local_paths()
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.modules.diffusionmodules.openaimodel import TimestepEmbedSequential
 from ldm.util import instantiate_from_config
+from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
+    get_unet_for_hook,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -357,7 +360,7 @@ def _run_unconditional_sampling(
     save_generated_pngs: bool = False,
     generated_dir: Optional[Path] = None,
 ) -> int:
-    unet = model.model.diffusion_model
+    unet = get_unet_for_hook(model)
     sampler = DDIMSampler(model)
     shape = [unet.in_channels, unet.image_size, unet.image_size]
 

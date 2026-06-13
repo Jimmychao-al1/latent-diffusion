@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": "2026-05-31T13:09:45",
+    "run_label": "interval10_samples50000_steps200_eta0.0",
+    "fid": 8.130680796670049,
+    "fid_at": "50k",
+    "num_samples": 50000,
+    "replicate_interval": 10,
+    "nonuniform": false,
+    "pow": 1.5,
+    "summary_path": "/home/jimmy/latent-diffusion/./deepcache_results/deepcache_r5_50k/interval10_samples50000_steps200_eta0.0/summary.json"
+  }
+]

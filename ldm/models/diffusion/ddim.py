@@ -74,6 +74,8 @@ class DDIMSampler(object):
                log_every_t=100,
                unconditional_guidance_scale=1.,
                unconditional_conditioning=None,
+               replicate_interval=None,
+               nonuniform=False, pow=None,
                # this has to come in the same format as the conditioning, # e.g. as encoded tokens, ...
                **kwargs
                ):
@@ -90,7 +92,7 @@ class DDIMSampler(object):
         # sampling
         C, H, W = shape
         size = (batch_size, C, H, W)
-        print(f'Data shape for DDIM sampling is {size}, eta {eta}')
+        #print(f'Data shape for DDIM sampling is {size}, eta {eta}')
 
         samples, intermediates = self.ddim_sampling(conditioning, size,
                                                     callback=callback,
@@ -106,6 +108,8 @@ class DDIMSampler(object):
                                                     log_every_t=log_every_t,
                                                     unconditional_guidance_scale=unconditional_guidance_scale,
                                                     unconditional_conditioning=unconditional_conditioning,
+                                                    replicate_interval=replicate_interval,
+                                                    nonuniform=nonuniform, pow=pow,
                                                     )
         return samples, intermediates
 
@@ -115,7 +119,8 @@ class DDIMSampler(object):
                       callback=None, timesteps=None, quantize_denoised=False,
                       mask=None, x0=None, img_callback=None, log_every_t=100,
                       temperature=1., noise_dropout=0., score_corrector=None, corrector_kwargs=None,
-                      unconditional_guidance_scale=1., unconditional_conditioning=None,):
+                      unconditional_guidance_scale=1., unconditional_conditioning=None,
+                      replicate_interval=None, nonuniform=False, pow=None,):
         device = self.model.betas.device
         b = shape[0]
         if x_T is None:
@@ -132,10 +137,12 @@ class DDIMSampler(object):
         intermediates = {'x_inter': [img], 'pred_x0': [img]}
         time_range = reversed(range(0,timesteps)) if ddim_use_original_steps else np.flip(timesteps)
         total_steps = timesteps if ddim_use_original_steps else timesteps.shape[0]
-        print(f"Running DDIM Sampling with {total_steps} timesteps")
+        #print(f"Running DDIM Sampling with {total_steps} timesteps")
 
         iterator = tqdm(time_range, desc='DDIM Sampler', total=total_steps)
 
+        self.model.model.reset_current_t()
+        self.model.model.set_interval(total_steps, replicate_interval, nonuniform=nonuniform, pow=pow)
         for i, step in enumerate(iterator):
             index = total_steps - i - 1
             ts = torch.full((b,), step, device=device, dtype=torch.long)

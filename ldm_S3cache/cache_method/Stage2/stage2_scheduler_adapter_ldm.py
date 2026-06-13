@@ -39,6 +39,23 @@ RUNTIME_LAYER_NAMES: Tuple[str, ...] = tuple(
 assert len(RUNTIME_LAYER_NAMES) == EXPECTED_NUM_BLOCKS
 
 
+def get_unet_for_hook(model: Any) -> Any:
+    """Get UNet module for block-level hook registration.
+
+    Handles TFMQ-DM QuantModel wrapper: when diffusion_model is QuantModel,
+    the actual UNet (input_blocks/middle_block/output_blocks) lives at .model.
+    For FP models, diffusion_model is already the UNet.
+    """
+    dm = model.model.diffusion_model
+    if hasattr(dm, "model") and hasattr(dm.model, "input_blocks"):
+        return dm.model
+    if hasattr(dm, "input_blocks"):
+        return dm
+    raise RuntimeError(
+        f"Cannot find UNet input_blocks in diffusion_model ({type(dm).__name__})"
+    )
+
+
 def load_stage1_scheduler_config(path: str | Path) -> Dict[str, Any]:
     """讀取 Stage1 scheduler_config.json。"""
     p = Path(path)

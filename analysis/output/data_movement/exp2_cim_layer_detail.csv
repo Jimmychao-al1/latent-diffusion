@@ -1,121 +1,121 @@
-model,block_id,block_name,layer_name,layer_type,weight_shape,weight_bytes,act_bytes,dm_per_exec,cim_rows,cim_cols,cim_max_dim,cim_array_size,is_quantized,seq_len
-ldm_ffhq256,0,encoder_layer_0,encoder_layer_0[0].conv,conv2d,"(224, 3, 3, 3)",24192,49152,73344,27,224,224,6048,False,1
-ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].in_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,False,1
-ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].in_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,False,1
-ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,3,encoder_layer_3,encoder_layer_3[0].downsample,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].in_layers.conv,conv2d,"(448, 224, 3, 3)",3612672,917504,4530176,2016,448,2016,903168,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].skip_connection,conv2d,"(448, 224, 1, 1)",401408,917504,1318912,224,448,448,100352,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,False,1
-ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,False,1
-ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].in_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,False,1
-ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,False,1
-ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,False,1
-ldm_ffhq256,6,encoder_layer_6,encoder_layer_6[0].downsample,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].in_layers.conv,conv2d,"(672, 448, 3, 3)",10838016,458752,11296768,4032,672,4032,2709504,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].skip_connection,conv2d,"(672, 448, 1, 1)",1204224,458752,1662976,448,672,672,301056,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,False,1
-ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,False,1
-ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].in_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,False,1
-ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,False,1
-ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,False,1
-ldm_ffhq256,9,encoder_layer_9,encoder_layer_9[0].downsample,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].in_layers.conv,conv2d,"(896, 672, 3, 3)",21676032,172032,21848064,6048,896,6048,5419008,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].skip_connection,conv2d,"(896, 672, 1, 1)",2408448,172032,2580480,672,896,896,602112,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[0].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[2].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[2].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,12,middle_layer,middle_layer[2].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].in_layers.conv,conv2d,"(896, 1792, 3, 3)",57802752,458752,58261504,16128,896,16128,14450688,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].skip_connection,conv2d,"(896, 1792, 1, 1)",6422528,458752,6881280,1792,896,1792,1605632,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].in_layers.conv,conv2d,"(896, 1792, 3, 3)",57802752,458752,58261504,16128,896,16128,14450688,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].skip_connection,conv2d,"(896, 1792, 1, 1)",6422528,458752,6881280,1792,896,1792,1605632,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].in_layers.conv,conv2d,"(896, 1568, 3, 3)",50577408,401408,50978816,14112,896,14112,12644352,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].skip_connection,conv2d,"(896, 1568, 1, 1)",5619712,401408,6021120,1568,896,1568,1404928,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,False,1
-ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[2].upsample,conv2d,"(896, 896, 3, 3)",28901376,917504,29818880,8064,896,8064,7225344,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].in_layers.conv,conv2d,"(672, 1568, 3, 3)",37933056,1605632,39538688,14112,672,14112,9483264,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].skip_connection,conv2d,"(672, 1568, 1, 1)",4214784,1605632,5820416,1568,672,1568,1053696,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,False,1
-ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].in_layers.conv,conv2d,"(672, 1344, 3, 3)",32514048,1376256,33890304,12096,672,12096,8128512,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].skip_connection,conv2d,"(672, 1344, 1, 1)",3612672,1376256,4988928,1344,672,1344,903168,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,False,1
-ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].in_layers.conv,conv2d,"(672, 1120, 3, 3)",27095040,1146880,28241920,10080,672,10080,6773760,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].skip_connection,conv2d,"(672, 1120, 1, 1)",3010560,1146880,4157440,1120,672,1120,752640,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,False,1
-ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[2].upsample,conv2d,"(672, 672, 3, 3)",16257024,2752512,19009536,6048,672,6048,4064256,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].in_layers.conv,conv2d,"(448, 1120, 3, 3)",18063360,4587520,22650880,10080,448,10080,4515840,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].skip_connection,conv2d,"(448, 1120, 1, 1)",2007040,4587520,6594560,1120,448,1120,501760,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,False,1
-ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].in_layers.conv,conv2d,"(448, 896, 3, 3)",14450688,3670016,18120704,8064,448,8064,3612672,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].skip_connection,conv2d,"(448, 896, 1, 1)",1605632,3670016,5275648,896,448,896,401408,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,False,1
-ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].in_layers.conv,conv2d,"(448, 672, 3, 3)",10838016,2752512,13590528,6048,448,6048,2709504,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].skip_connection,conv2d,"(448, 672, 1, 1)",1204224,2752512,3956736,672,448,672,301056,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,False,1
-ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[2].upsample,conv2d,"(448, 448, 3, 3)",7225344,7340032,14565376,4032,448,4032,1806336,False,1
-ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].in_layers.conv,conv2d,"(224, 672, 3, 3)",5419008,11010048,16429056,6048,224,6048,1354752,False,1
-ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,False,1
-ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].skip_connection,conv2d,"(224, 672, 1, 1)",602112,11010048,11612160,672,224,672,150528,False,1
-ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].in_layers.conv,conv2d,"(224, 448, 3, 3)",3612672,7340032,10952704,4032,224,4032,903168,False,1
-ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,False,1
-ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].skip_connection,conv2d,"(224, 448, 1, 1)",401408,7340032,7741440,448,224,448,100352,False,1
-ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].in_layers.conv,conv2d,"(224, 448, 3, 3)",3612672,7340032,10952704,4032,224,4032,903168,False,1
-ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,False,1
-ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,False,1
-ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].skip_connection,conv2d,"(224, 448, 1, 1)",401408,7340032,7741440,448,224,448,100352,False,1
+model,block_id,block_name,layer_name,layer_type,weight_shape,weight_bytes,act_bytes,dm_per_exec,cim_rows,cim_cols,cim_max_dim,cim_array_size,num_params,cim_weight_bits,cim_cell_count_w8,cim_arrays_256x256,cim_arrays_32x32,is_quantized,seq_len
+ldm_ffhq256,0,encoder_layer_0,encoder_layer_0[0].conv,conv2d,"(224, 3, 3, 3)",24192,49152,73344,27,224,224,6048,6048,8,48384,1,48,False,1
+ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].in_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,1,encoder_layer_1,encoder_layer_1[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].in_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,2,encoder_layer_2,encoder_layer_2[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,3,encoder_layer_3,encoder_layer_3[0].downsample,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].in_layers.conv,conv2d,"(448, 224, 3, 3)",3612672,917504,4530176,2016,448,2016,903168,903168,8,7225344,111,7056,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[0].skip_connection,conv2d,"(448, 224, 1, 1)",401408,917504,1318912,224,448,448,100352,100352,8,802816,13,784,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,4,encoder_layer_4,encoder_layer_4[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].in_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,5,encoder_layer_5,encoder_layer_5[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,6,encoder_layer_6,encoder_layer_6[0].downsample,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].in_layers.conv,conv2d,"(672, 448, 3, 3)",10838016,458752,11296768,4032,672,4032,2709504,2709504,8,21676032,331,21168,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[0].skip_connection,conv2d,"(672, 448, 1, 1)",1204224,458752,1662976,448,672,672,301056,301056,8,2408448,37,2352,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,7,encoder_layer_7,encoder_layer_7[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].in_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,8,encoder_layer_8,encoder_layer_8[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,9,encoder_layer_9,encoder_layer_9[0].downsample,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].in_layers.conv,conv2d,"(896, 672, 3, 3)",21676032,172032,21848064,6048,896,6048,5419008,5419008,8,43352064,662,42336,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[0].skip_connection,conv2d,"(896, 672, 1, 1)",2408448,172032,2580480,672,896,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,10,encoder_layer_10,encoder_layer_10[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,11,encoder_layer_11,encoder_layer_11[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[0].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[2].in_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[2].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,12,middle_layer,middle_layer[2].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].in_layers.conv,conv2d,"(896, 1792, 3, 3)",57802752,458752,58261504,16128,896,16128,14450688,14450688,8,115605504,1764,112896,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[0].skip_connection,conv2d,"(896, 1792, 1, 1)",6422528,458752,6881280,1792,896,1792,1605632,1605632,8,12845056,196,12544,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,13,decoder_layer_0,decoder_layer_0[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].in_layers.conv,conv2d,"(896, 1792, 3, 3)",57802752,458752,58261504,16128,896,16128,14450688,14450688,8,115605504,1764,112896,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[0].skip_connection,conv2d,"(896, 1792, 1, 1)",6422528,458752,6881280,1792,896,1792,1605632,1605632,8,12845056,196,12544,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,14,decoder_layer_1,decoder_layer_1[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].in_layers.conv,conv2d,"(896, 1568, 3, 3)",50577408,401408,50978816,14112,896,14112,12644352,12644352,8,101154816,1544,98784,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].emb_layers.linear,linear,"(896, 896)",3211264,3584,3214848,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].out_layers.conv,conv2d,"(896, 896, 3, 3)",28901376,229376,29130752,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[0].skip_connection,conv2d,"(896, 1568, 1, 1)",5619712,401408,6021120,1568,896,1568,1404928,1404928,8,11239424,172,10976,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[1].qkv,conv1d,"(2688, 896, 1)",9633792,229376,9863168,896,2688,2688,2408448,2408448,8,19267584,294,18816,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[1].proj_out,conv1d,"(896, 896, 1)",3211264,229376,3440640,896,896,896,802816,802816,8,6422528,98,6272,False,1
+ldm_ffhq256,15,decoder_layer_2,decoder_layer_2[2].upsample,conv2d,"(896, 896, 3, 3)",28901376,917504,29818880,8064,896,8064,7225344,7225344,8,57802752,882,56448,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].in_layers.conv,conv2d,"(672, 1568, 3, 3)",37933056,1605632,39538688,14112,672,14112,9483264,9483264,8,75866112,1158,74088,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[0].skip_connection,conv2d,"(672, 1568, 1, 1)",4214784,1605632,5820416,1568,672,1568,1053696,1053696,8,8429568,129,8232,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,16,decoder_layer_3,decoder_layer_3[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].in_layers.conv,conv2d,"(672, 1344, 3, 3)",32514048,1376256,33890304,12096,672,12096,8128512,8128512,8,65028096,993,63504,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[0].skip_connection,conv2d,"(672, 1344, 1, 1)",3612672,1376256,4988928,1344,672,1344,903168,903168,8,7225344,111,7056,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,17,decoder_layer_4,decoder_layer_4[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].in_layers.conv,conv2d,"(672, 1120, 3, 3)",27095040,1146880,28241920,10080,672,10080,6773760,6773760,8,54190080,827,52920,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].emb_layers.linear,linear,"(672, 896)",2408448,3584,2412032,896,672,896,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].out_layers.conv,conv2d,"(672, 672, 3, 3)",16257024,688128,16945152,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[0].skip_connection,conv2d,"(672, 1120, 1, 1)",3010560,1146880,4157440,1120,672,1120,752640,752640,8,6021120,92,5880,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[1].qkv,conv1d,"(2016, 672, 1)",5419008,688128,6107136,672,2016,2016,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[1].proj_out,conv1d,"(672, 672, 1)",1806336,688128,2494464,672,672,672,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,18,decoder_layer_5,decoder_layer_5[2].upsample,conv2d,"(672, 672, 3, 3)",16257024,2752512,19009536,6048,672,6048,4064256,4064256,8,32514048,497,31752,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].in_layers.conv,conv2d,"(448, 1120, 3, 3)",18063360,4587520,22650880,10080,448,10080,4515840,4515840,8,36126720,552,35280,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[0].skip_connection,conv2d,"(448, 1120, 1, 1)",2007040,4587520,6594560,1120,448,1120,501760,501760,8,4014080,62,3920,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,19,decoder_layer_6,decoder_layer_6[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].in_layers.conv,conv2d,"(448, 896, 3, 3)",14450688,3670016,18120704,8064,448,8064,3612672,3612672,8,28901376,441,28224,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[0].skip_connection,conv2d,"(448, 896, 1, 1)",1605632,3670016,5275648,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,20,decoder_layer_7,decoder_layer_7[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].in_layers.conv,conv2d,"(448, 672, 3, 3)",10838016,2752512,13590528,6048,448,6048,2709504,2709504,8,21676032,331,21168,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].emb_layers.linear,linear,"(448, 896)",1605632,3584,1609216,896,448,896,401408,401408,8,3211264,49,3136,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].out_layers.conv,conv2d,"(448, 448, 3, 3)",7225344,1835008,9060352,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[0].skip_connection,conv2d,"(448, 672, 1, 1)",1204224,2752512,3956736,672,448,672,301056,301056,8,2408448,37,2352,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[1].qkv,conv1d,"(1344, 448, 1)",2408448,1835008,4243456,448,1344,1344,602112,602112,8,4816896,74,4704,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[1].proj_out,conv1d,"(448, 448, 1)",802816,1835008,2637824,448,448,448,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,21,decoder_layer_8,decoder_layer_8[2].upsample,conv2d,"(448, 448, 3, 3)",7225344,7340032,14565376,4032,448,4032,1806336,1806336,8,14450688,221,14112,False,1
+ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].in_layers.conv,conv2d,"(224, 672, 3, 3)",5419008,11010048,16429056,6048,224,6048,1354752,1354752,8,10838016,166,10584,False,1
+ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,22,decoder_layer_9,decoder_layer_9[0].skip_connection,conv2d,"(224, 672, 1, 1)",602112,11010048,11612160,672,224,672,150528,150528,8,1204224,19,1176,False,1
+ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].in_layers.conv,conv2d,"(224, 448, 3, 3)",3612672,7340032,10952704,4032,224,4032,903168,903168,8,7225344,111,7056,False,1
+ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,23,decoder_layer_10,decoder_layer_10[0].skip_connection,conv2d,"(224, 448, 1, 1)",401408,7340032,7741440,448,224,448,100352,100352,8,802816,13,784,False,1
+ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].in_layers.conv,conv2d,"(224, 448, 3, 3)",3612672,7340032,10952704,4032,224,4032,903168,903168,8,7225344,111,7056,False,1
+ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].emb_layers.linear,linear,"(224, 896)",802816,3584,806400,896,224,896,200704,200704,8,1605632,25,1568,False,1
+ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].out_layers.conv,conv2d,"(224, 224, 3, 3)",1806336,3670016,5476352,2016,224,2016,451584,451584,8,3612672,56,3528,False,1
+ldm_ffhq256,24,decoder_layer_11,decoder_layer_11[0].skip_connection,conv2d,"(224, 448, 1, 1)",401408,7340032,7741440,448,224,448,100352,100352,8,802816,13,784,False,1

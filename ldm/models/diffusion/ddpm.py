@@ -1399,15 +1399,56 @@ class DiffusionWrapper(pl.LightningModule):
         self.conditioning_key = conditioning_key
         assert self.conditioning_key in [None, 'concat', 'crossattn', 'hybrid', 'adm']
 
+        self.replicate_interval = None
+        self.prv_feature = None
+        self.current_t = 0
+
+    def sample_from_quad(self, total_numbers, n_samples, pow):
+        # Generate linearly spaced values between 0 and a max value
+        x_values = np.linspace(0, total_numbers**(1/pow), n_samples+1)
+
+        # Raise these values to the power of 1.5 to get a non-linear distribution
+        indices = np.unique(np.int32(x_values**pow))[:-1]
+        return indices
+
+    def set_interval(self, total_number, replicate_interval=None, nonuniform=False, pow=None):
+        self.total_number = total_number
+        self.replicate_interval = replicate_interval
+
+        if replicate_interval is None:
+            self.slow_steps = list(range(total_number))
+        else:
+            if nonuniform:
+                if self.total_number % self.replicate_interval == 0:
+                    slow_num = self.total_number // self.replicate_interval
+                else:
+                    slow_num = self.total_number // self.replicate_interval + 1
+                self.slow_steps = self.sample_from_quad(self.total_number, slow_num, pow)
+            else:
+                self.slow_steps = list(range(0, self.total_number, self.replicate_interval))
+
+    def reset_current_t(self):
+        self.current_t = 0
+
     def forward(self, x, t, c_concat: list = None, c_crossattn: list = None):
         if self.conditioning_key is None:
-            out = self.diffusion_model(x, t)
+            if self.prv_feature is None or self.replicate_interval is None or self.current_t in self.slow_steps:
+                out, prv_f = self.diffusion_model(x, t)
+                self.prv_feature = prv_f
+            else:
+                out, prv_f = self.diffusion_model(x, t, prv_feature=self.prv_feature)
+            self.current_t += 1
         elif self.conditioning_key == 'concat':
             xc = torch.cat([x] + c_concat, dim=1)
             out = self.diffusion_model(xc, t)
         elif self.conditioning_key == 'crossattn':
             cc = torch.cat(c_crossattn, 1)
-            out = self.diffusion_model(x, t, context=cc)
+            if self.prv_feature is None or self.replicate_interval is None or self.current_t in self.slow_steps:
+                out, prv_f = self.diffusion_model(x, t, context=cc)
+                self.prv_feature = prv_f
+            else:
+                out, prv_f = self.diffusion_model(x, t, context=cc, prv_feature=self.prv_feature)
+            self.current_t += 1
         elif self.conditioning_key == 'hybrid':
             xc = torch.cat([x] + c_concat, dim=1)
             cc = torch.cat(c_crossattn, 1)

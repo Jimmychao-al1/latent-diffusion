@@ -56,6 +56,7 @@ from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
     apply_cache_scheduler_runtime_overrides,
     cache_runtime_override_variant_label,
     cache_scheduler_to_jsonable,
+    get_unet_for_hook,
     load_stage1_scheduler_config,
     stage1_block_to_runtime_block,
     stage1_mask_to_runtime_cache_scheduler,
@@ -456,7 +457,7 @@ class Stage2LoopIndexCacheHook:
         total_steps: int,
     ) -> None:
         self.model = model
-        self.unet = model.model.diffusion_model
+        self.unet = get_unet_for_hook(model)
         self.recompute_loop_steps_by_runtime = {
             k: set(int(v) for v in vals) for k, vals in recompute_loop_steps_by_runtime.items()
         }

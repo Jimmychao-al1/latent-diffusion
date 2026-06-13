@@ -52,6 +52,9 @@ _bootstrap_local_paths()
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.modules.diffusionmodules.openaimodel import TimestepEmbedSequential
 from ldm.util import instantiate_from_config
+from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
+    get_unet_for_hook,
+)
 from scripts.sample_diffusion import (
     compute_fid,
     export_real_from_lmdb,
@@ -579,7 +582,7 @@ def _evaluate_fid_once(
     if target_canonical is not None:
         if k is None:
             raise ValueError("k is required when target_canonical is set")
-        unet = model.model.diffusion_model
+        unet = get_unet_for_hook(model)
         target_unet_name = _canonical_to_unet_name(target_canonical)
         cache_ctx = SingleBlockRuntimeCache(
             unet=unet,

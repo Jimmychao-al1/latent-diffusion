@@ -728,37 +728,18 @@ class UNetModel(nn.Module):
             emb = emb + self.label_emb(y)
 
         h = x.type(self.dtype)
-        if 'prv_feature' in kwargs:
-            replicate_layer = 0
-            for i, module in enumerate(self.input_blocks):
-                h = module(h, emb, context)
-                hs.append(h)
-                if i == replicate_layer:
-                    break
-
-            for i, module in enumerate(self.output_blocks):
-                if i < len(self.output_blocks) - 1 - replicate_layer:
-                    continue
-                h = th.cat([kwargs['prv_feature'][i-1], hs.pop()], dim=1)
-                h = module(h, emb, context)
-            prv_f = None
-        else:
-            for module in self.input_blocks:
-                h = module(h, emb, context)
-                hs.append(h)
-            h = self.middle_block(h, emb, context)
-
-            prv_f = []
-            for module in self.output_blocks:
-                h = th.cat([h, hs.pop()], dim=1)
-                h = module(h, emb, context)
-                prv_f.append(h)
-
+        for module in self.input_blocks:
+            h = module(h, emb, context)
+            hs.append(h)
+        h = self.middle_block(h, emb, context)
+        for module in self.output_blocks:
+            h = th.cat([h, hs.pop()], dim=1)
+            h = module(h, emb, context)
         h = h.type(x.dtype)
         if self.predict_codebook_ids:
-            return self.id_predictor(h), prv_f
+            return self.id_predictor(h)
         else:
-            return self.out(h), prv_f
+            return self.out(h)
 
 
 class EncoderUNetModel(nn.Module):

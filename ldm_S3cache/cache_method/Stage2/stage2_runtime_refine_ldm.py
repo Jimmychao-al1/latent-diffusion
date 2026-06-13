@@ -55,6 +55,7 @@ from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
     cache_runtime_override_variant_label,
     cache_scheduler_to_jsonable,
     ddim_timestep_to_step_index,
+    get_unet_for_hook,
     load_stage1_scheduler_config,
     rebuild_expanded_mask_from_shared_zones_and_k_per_zone,
     runtime_name_to_block_id,
@@ -699,7 +700,7 @@ def run_stage2_refine_ldm(
         raise ValueError(f"eval_chunk_size must be >= 1, got {chunk_size}")
     chunk_size = min(chunk_size, total_eval_images)
 
-    unet = model.model.diffusion_model
+    unet = get_unet_for_hook(model)
     rng = torch.Generator(device=device)
     rng.manual_seed(seed)
 
