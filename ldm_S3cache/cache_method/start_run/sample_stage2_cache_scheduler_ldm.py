@@ -33,16 +33,76 @@ import torch
 from omegaconf import OmegaConf
 
 
+def _is_qldm_run() -> bool:
+    return "--cali_ckpt" in sys.argv
+
+
+def _repo_root() -> str:
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+
+
 def _bootstrap_local_paths() -> None:
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
-    candidate_paths = [
-        repo_root,
-        os.path.join(repo_root, "src", "taming-transformers"),
-        os.path.join(repo_root, "src", "clip"),
-    ]
-    for path in candidate_paths:
+    repo_root = _repo_root()
+    tfmq_root = os.environ.get("TFMQ_DM_ROOT", "/home/jimmy/TFMQ-DM")
+    tfmq_sd = os.path.join(tfmq_root, "stable-diffusion")
+    cache_method = os.path.join(repo_root, "ldm_S3cache", "cache_method")
+
+    if _is_qldm_run():
+        # Q-LDM needs TFMQ-DM's patched ldm (QKMatMul); latent-diffusion stays for S3-cache + FID helpers.
+        ordered = [
+            tfmq_root,
+            tfmq_sd,
+            repo_root,
+            os.path.join(repo_root, "src", "taming-transformers"),
+            os.path.join(repo_root, "src", "clip"),
+            cache_method,
+        ]
+    else:
+        ordered = [
+            repo_root,
+            os.path.join(repo_root, "src", "taming-transformers"),
+            os.path.join(repo_root, "src", "clip"),
+        ]
+
+    for path in reversed(ordered):
         if os.path.isdir(path) and path not in sys.path:
             sys.path.insert(0, path)
+
+    if _is_qldm_run():
+        _prefer_tfmq_ldm_namespace()
+
+
+def _prefer_tfmq_ldm_namespace() -> None:
+    """Prefer TFMQ-DM's patched openaimodel (QKMatMul) over latent-diffusion's."""
+    tfmq_root = os.environ.get("TFMQ_DM_ROOT", "/home/jimmy/TFMQ-DM")
+    ldm_sd = os.path.join(tfmq_root, "stable-diffusion", "ldm")
+    ldm_ld = os.path.join(_repo_root(), "ldm")
+    import ldm as ldm_pkg
+
+    ldm_pkg.__path__ = [p for p in (ldm_sd, ldm_ld) if os.path.isdir(p)]
+    for mod_name in list(sys.modules):
+        if mod_name.startswith("ldm.modules.diffusionmodules.openaimodel"):
+            del sys.modules[mod_name]
+
+
+def _import_sample_diffusion():
+    if _is_qldm_run():
+        import importlib.util
+
+        script_path = os.path.join(_repo_root(), "scripts", "sample_diffusion.py")
+        spec = importlib.util.spec_from_file_location(
+            "latent_diffusion_scripts_sample_diffusion",
+            script_path,
+        )
+        if spec is None or spec.loader is None:
+            raise ImportError(f"cannot load sample_diffusion from {script_path}")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    import scripts.sample_diffusion as mod
+
+    return mod
 
 
 _bootstrap_local_paths()
@@ -63,12 +123,11 @@ from ldm_S3cache.cache_method.Stage2.stage2_scheduler_adapter_ldm import (
     stage1_mask_to_runtime_cache_scheduler,
     validate_stage1_scheduler_config,
 )
-from scripts.sample_diffusion import (
-    compute_fid,
-    export_real_from_image_dir,
-    export_real_from_lmdb,
-    run,
-)
+_sample_diffusion = _import_sample_diffusion()
+compute_fid = _sample_diffusion.compute_fid
+export_real_from_image_dir = _sample_diffusion.export_real_from_image_dir
+export_real_from_lmdb = _sample_diffusion.export_real_from_lmdb
+run = _sample_diffusion.run
 
 
 # Fixed formal experiment spec (except n_samples supports 5K/50K switch)

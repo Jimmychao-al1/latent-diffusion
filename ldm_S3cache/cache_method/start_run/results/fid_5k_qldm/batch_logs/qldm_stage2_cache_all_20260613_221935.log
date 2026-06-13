@@ -1,0 +1,88 @@
+=== Cache run: K15_sw3_lam1.0 ===
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 2.0.8 (you have 1.4.18). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2026-06-13 22:21:26,694 [INFO] [LDM-start_run] mode=cache dataset=ffhq256 n_samples=5000
+2026-06-13 22:21:26,694 [INFO] [LDM-start_run] gen_dir=/home/jimmy/latent-diffusion/outputs/start_run/fid_5k/20260613_222126_stage2_K15_sw3_lam1.0/gen_images
+2026-06-13 22:21:26,695 [INFO] [LDM-start_run] eval_dir=/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/pytorch_lightning/utilities/distributed.py:258: LightningDeprecationWarning: `pytorch_lightning.utilities.distributed.rank_zero_only` has been deprecated in v1.8.1 and will be removed in v2.0.0. You can import it from `pytorch_lightning.utilities` instead.
+  rank_zero_deprecation(
+LatentDiffusion: Running in eps-prediction mode
+DiffusionWrapper has 274.06 M params.
+Keeping EMAs of 370.
+making attention of type 'vanilla' with 512 in_channels
+Working with z of shape (1, 3, 64, 64) = 12288 dimensions.
+making attention of type 'vanilla' with 512 in_channels
+Training LatentDiffusion as an unconditional model.
+Traceback (most recent call last):
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 1016, in <module>
+    main()
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 775, in main
+    model = setup_quantized_ldm(model, args.cali_ckpt)
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_scheduler_adapter_ldm.py", line 73, in setup_quantized_ldm
+    from quant.calibration import load_cali_model
+  File "/home/jimmy/TFMQ-DM/quant/calibration.py", line 6, in <module>
+    from quant.quant_block import BaseQuantBlock
+  File "/home/jimmy/TFMQ-DM/quant/quant_block.py", line 5, in <module>
+    from ldm.modules.diffusionmodules.openaimodel import AttentionBlock, QKMatMul, ResBlock, SMVMatMul, TimestepBlock, checkpoint
+ImportError: cannot import name 'QKMatMul' from 'ldm.modules.diffusionmodules.openaimodel' (/home/jimmy/latent-diffusion/ldm/modules/diffusionmodules/openaimodel.py)
+=== Cache run: K15_sw3_lam0.5 ===
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 2.0.8 (you have 1.4.18). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2026-06-13 22:25:03,820 [INFO] [LDM-start_run] mode=cache dataset=ffhq256 n_samples=5000
+2026-06-13 22:25:03,820 [INFO] [LDM-start_run] gen_dir=/home/jimmy/latent-diffusion/outputs/start_run/fid_5k/20260613_222503_stage2_K15_sw3_lam0.5/gen_images
+2026-06-13 22:25:03,820 [INFO] [LDM-start_run] eval_dir=/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/pytorch_lightning/utilities/distributed.py:258: LightningDeprecationWarning: `pytorch_lightning.utilities.distributed.rank_zero_only` has been deprecated in v1.8.1 and will be removed in v2.0.0. You can import it from `pytorch_lightning.utilities` instead.
+  rank_zero_deprecation(
+LatentDiffusion: Running in eps-prediction mode
+DiffusionWrapper has 274.06 M params.
+Keeping EMAs of 370.
+making attention of type 'vanilla' with 512 in_channels
+Working with z of shape (1, 3, 64, 64) = 12288 dimensions.
+making attention of type 'vanilla' with 512 in_channels
+Training LatentDiffusion as an unconditional model.
+Traceback (most recent call last):
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 1016, in <module>
+    main()
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 775, in main
+    model = setup_quantized_ldm(model, args.cali_ckpt)
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_scheduler_adapter_ldm.py", line 73, in setup_quantized_ldm
+    from quant.calibration import load_cali_model
+  File "/home/jimmy/TFMQ-DM/quant/calibration.py", line 6, in <module>
+    from quant.quant_block import BaseQuantBlock
+  File "/home/jimmy/TFMQ-DM/quant/quant_block.py", line 5, in <module>
+    from ldm.modules.diffusionmodules.openaimodel import AttentionBlock, QKMatMul, ResBlock, SMVMatMul, TimestepBlock, checkpoint
+ImportError: cannot import name 'QKMatMul' from 'ldm.modules.diffusionmodules.openaimodel' (/home/jimmy/latent-diffusion/ldm/modules/diffusionmodules/openaimodel.py)
+=== Cache run: K20_sw3_lam1.0 ===
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 2.0.8 (you have 1.4.18). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2026-06-13 22:25:13,167 [INFO] [LDM-start_run] mode=cache dataset=ffhq256 n_samples=5000
+2026-06-13 22:25:13,167 [INFO] [LDM-start_run] gen_dir=/home/jimmy/latent-diffusion/outputs/start_run/fid_5k/20260613_222513_stage2_K20_sw3_lam1.0/gen_images
+2026-06-13 22:25:13,167 [INFO] [LDM-start_run] eval_dir=/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+/home/jimmy/anaconda3/envs/ldm/lib/python3.10/site-packages/pytorch_lightning/utilities/distributed.py:258: LightningDeprecationWarning: `pytorch_lightning.utilities.distributed.rank_zero_only` has been deprecated in v1.8.1 and will be removed in v2.0.0. You can import it from `pytorch_lightning.utilities` instead.
+  rank_zero_deprecation(
+LatentDiffusion: Running in eps-prediction mode
+DiffusionWrapper has 274.06 M params.
+Keeping EMAs of 370.
+making attention of type 'vanilla' with 512 in_channels
+Working with z of shape (1, 3, 64, 64) = 12288 dimensions.
+making attention of type 'vanilla' with 512 in_channels
+Training LatentDiffusion as an unconditional model.
+Traceback (most recent call last):
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 1016, in <module>
+    main()
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/sample_stage2_cache_scheduler_ldm.py", line 775, in main
+    model = setup_quantized_ldm(model, args.cali_ckpt)
+  File "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_scheduler_adapter_ldm.py", line 73, in setup_quantized_ldm
+    from quant.calibration import load_cali_model
+  File "/home/jimmy/TFMQ-DM/quant/calibration.py", line 6, in <module>
+    from quant.quant_block import BaseQuantBlock
+  File "/home/jimmy/TFMQ-DM/quant/quant_block.py", line 5, in <module>
+    from ldm.modules.diffusionmodules.openaimodel import AttentionBlock, QKMatMul, ResBlock, SMVMatMul, TimestepBlock, checkpoint
+ImportError: cannot import name 'QKMatMul' from 'ldm.modules.diffusionmodules.openaimodel' (/home/jimmy/latent-diffusion/ldm/modules/diffusionmodules/openaimodel.py)
+[DONE] all three Q-LDM cache runs complete
