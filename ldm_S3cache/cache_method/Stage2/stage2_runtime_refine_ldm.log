@@ -381,3 +381,436 @@
 2026-04-19 21:49:48,786 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
 2026-04-19 21:49:51,930 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=140661522211328 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2752, 'cache_hits': 7248, 'total_hook_calls': 10000}
 2026-04-19 21:49:53,243 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_ldm/src_K20_sw3_lam1.0/02_refined_blockwise
+2026-06-13 19:26:02,027 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/00_global_refine | seed=0 -----
+2026-06-13 19:26:02,160 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:26:05,027 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:26:36,283 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/00_global_refine | seed=0 -----
+2026-06-13 19:26:36,395 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:26:39,159 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:26:44,587 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:26:44,587 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:26:51,919 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=128249037258608 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:26:51,920 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:26:51,920 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:26:59,547 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=128249037258608 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:27:00,874 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:00,874 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:06,787 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=128249037258080 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:27:06,787 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:06,787 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:13,040 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=128249037258080 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:27:14,330 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:14,331 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:20,188 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=128259311273104 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:27:20,189 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:20,189 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:26,094 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=128259311273104 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:27:27,409 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:27,409 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:33,290 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=128249037256592 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:27:33,290 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:33,290 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:39,253 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=128249037256592 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:27:40,529 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:40,529 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:46,443 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=128259311272912 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:27:46,443 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:46,443 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:52,362 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=128259311272912 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:27:53,633 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:53,633 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:27:59,566 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=128249037255008 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:27:59,567 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:27:59,567 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:05,544 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=128249037255008 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:28:06,782 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:06,783 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:12,684 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=128259311272912 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:28:12,685 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:12,685 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:18,637 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=128259311272912 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:28:19,891 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:19,891 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:25,765 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=128249037252512 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:28:25,766 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:25,766 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:31,713 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=128249037252512 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:28:33,043 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/00_global_refine
+2026-06-13 19:28:35,240 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/02_refined_blockwise | seed=0 -----
+2026-06-13 19:28:35,297 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:28:42,387 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:28:47,960 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:47,961 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:28:55,407 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=129968297339552 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:28:55,408 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:28:55,408 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:02,917 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=129968297339552 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:29:04,776 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:04,777 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:11,028 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=129968319939296 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:29:11,029 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:11,029 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:17,590 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=129968319939296 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:29:19,017 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:19,018 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:25,756 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=129981135963280 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:29:25,756 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:25,756 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:32,134 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=129981135963280 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:29:33,579 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:33,579 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:39,933 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=129968319940448 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:29:39,933 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:39,933 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:46,295 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=129968319940448 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:29:47,817 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:47,817 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:29:54,576 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=129968333753696 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:29:54,577 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:29:54,577 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:01,192 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=129968333753696 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:30:02,882 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:02,882 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:09,522 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=129968319944000 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:30:09,522 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:09,522 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:16,198 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=129968319944000 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:30:17,603 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:17,603 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:24,080 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=129968319940640 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:30:24,080 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:24,081 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:30,900 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=129968319940640 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:30:32,954 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:32,954 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:30:38,934 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=129968297339552 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:30:38,934 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:38,934 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:30:44,913 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=129968297339552 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:30:47,646 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/02_refined_blockwise
+2026-06-13 19:31:59,970 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam0.5/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam0.5/00_global_refine | seed=0 -----
+2026-06-13 19:32:00,351 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:33:01,280 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:34:25,568 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:34:25,568 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:35:04,147 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=125293286276976 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:35:04,147 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:35:04,147 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:35:47,020 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=125293286276976 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:35:48,741 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:35:48,741 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:36:22,304 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=125293286276448 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:36:22,304 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:36:22,305 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:45:47,502 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/00_global_refine | seed=0 -----
+2026-06-13 19:45:48,264 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:47:24,268 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:47:36,772 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:47:36,772 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:47:44,365 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=138823856122288 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:47:44,365 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:47:44,365 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:47:51,835 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=138823856122288 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:47:53,195 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:47:53,195 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:47:59,067 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=138826422861104 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:47:59,099 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:47:59,099 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:05,047 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=138826422861104 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:48:06,251 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:06,252 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:12,118 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=138836695794640 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:48:12,119 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:12,119 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:19,242 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=138836695794640 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:48:20,842 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:20,842 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:27,140 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=138826422860240 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:48:27,140 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:27,141 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:33,901 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=138826422860240 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:48:35,346 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:35,346 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:41,395 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=138823856122288 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:48:41,395 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:41,395 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:47,321 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=138823856122288 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:48:48,575 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:48,575 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:48:55,206 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=138826422855776 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:48:55,206 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:48:55,206 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:49:01,565 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=138826422855776 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:49:02,963 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:49:02,963 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:49:08,984 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=138823856122288 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:49:08,985 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:49:08,985 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:49:15,989 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=138823856122288 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:49:17,310 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:49:17,310 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:49:23,500 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=138826422857888 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:49:23,500 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:49:23,501 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:49:29,424 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=138826422857888 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:49:30,772 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/00_global_refine
+2026-06-13 19:50:02,221 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/02_refined_blockwise | seed=0 -----
+2026-06-13 19:50:02,660 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:51:14,965 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:51:25,103 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:25,103 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:32,444 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=133048529086752 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:51:32,444 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:51:32,444 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:51:39,787 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=133048529086752 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:51:41,124 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:41,124 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:46,930 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=133048553744192 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:51:46,930 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:51:46,930 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:51:52,726 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=133048553744192 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:51:54,032 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:54,032 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:51:59,793 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=133061367808880 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:51:59,794 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:51:59,794 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:05,606 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=133061367808880 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:52:06,890 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:06,891 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:12,664 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=133048553735600 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:52:12,665 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:12,665 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:18,474 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=133048553735600 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:52:19,768 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:19,768 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:25,548 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=133048565500944 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:52:25,548 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:25,548 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:31,317 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=133048565500944 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:52:32,593 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:32,593 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:38,369 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=133048553735600 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:52:38,370 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:38,370 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:44,166 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=133048553735600 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:52:45,472 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:45,472 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:51,240 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=133048553735552 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:52:51,241 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:51,241 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:52:57,035 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=133048553735552 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:52:58,311 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:52:58,311 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:53:04,093 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=133048529086752 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:53:04,093 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:53:04,093 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:53:09,887 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=133048529086752 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:53:11,126 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam1.0/02_refined_blockwise
+2026-06-13 19:53:12,828 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam0.5/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam0.5/00_global_refine | seed=0 -----
+2026-06-13 19:53:12,900 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:53:15,685 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:53:35,021 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:53:35,022 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:53:42,437 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=131475342141632 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:53:42,438 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:53:42,438 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:53:49,891 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=131475342141632 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:53:51,253 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:53:51,254 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:53:57,028 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=131475364840736 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:53:57,028 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:53:57,028 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:02,857 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=131475364840736 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:54:04,125 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:04,125 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:09,914 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=131488180831136 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:54:09,914 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:09,914 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:15,738 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=131488180831136 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:54:16,990 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:16,990 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:22,788 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=131475364840784 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:54:22,788 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:22,789 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:28,616 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=131475364840784 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:54:29,870 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:29,871 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:35,701 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=131475378588592 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:54:35,701 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:35,701 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:41,510 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=131475378588592 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:54:42,817 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:42,817 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:48,604 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=131475364840784 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:54:48,604 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:48,604 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:54:54,421 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=131475364840784 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:54:55,680 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:54:55,680 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:01,483 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=131475364841072 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:55:01,484 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:01,484 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:07,318 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=131475364841072 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:55:08,597 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:08,597 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:14,389 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=131475342141632 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:55:14,390 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:14,390 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:20,223 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=131475342141632 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:55:21,502 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam0.5/00_global_refine
+2026-06-13 19:55:23,373 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam0.5/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam0.5/02_refined_blockwise | seed=0 -----
+2026-06-13 19:55:23,439 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:55:26,355 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:55:39,197 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:39,197 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:46,527 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=135239898824560 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:55:46,528 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:46,528 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:55:53,856 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=135239898824560 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:55:55,163 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:55:55,163 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:00,998 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=135239898824032 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:56:00,999 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:00,999 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:06,884 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=135239898824032 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:56:08,195 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:08,195 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:14,050 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=135248688972800 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:56:14,050 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:14,051 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:19,961 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=135248688972800 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:56:21,202 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:21,203 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:27,081 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=135239898822544 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:56:27,081 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:27,081 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:32,956 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=135239898822544 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:56:34,139 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:34,139 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:39,993 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=135248688972608 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:56:39,994 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:39,994 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:45,871 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=135248688972608 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:56:47,172 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:47,172 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:56:53,038 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=135239898820960 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:56:53,039 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:53,039 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:56:58,965 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=135239898820960 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:57:00,260 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:00,261 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:06,177 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=135248688972608 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:57:06,178 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:06,178 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:12,114 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=135248688972608 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:57:13,438 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:13,438 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:19,337 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=135239898818464 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:57:19,337 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:19,337 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:25,278 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=135239898818464 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2702, 'cache_hits': 7298, 'total_hook_calls': 10000}
+2026-06-13 19:57:26,633 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K15_sw3_lam0.5/02_refined_blockwise
+2026-06-13 19:57:28,414 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K20_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K20_sw3_lam1.0/00_global_refine | seed=0 -----
+2026-06-13 19:57:28,508 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 19:57:31,382 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 19:57:43,709 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:43,710 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:51,088 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=125928794597760 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:57:51,088 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:51,088 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:57:58,553 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=125928794597760 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:57:59,895 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:57:59,895 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:05,772 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=125928817174336 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:58:05,773 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:05,773 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:11,701 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=125928817174336 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:58:12,974 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:12,974 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:18,864 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=125941633221488 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:58:18,864 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:18,865 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:24,818 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=125941633221488 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:58:25,991 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:25,991 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:31,908 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=125928817165744 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:58:31,909 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:31,909 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:37,864 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=125928817165744 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:58:39,155 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:39,155 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:45,108 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=125928831028288 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:58:45,109 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:45,109 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:51,003 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=125928831028288 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:58:52,265 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:52,265 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:58:58,158 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=125928817165744 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:58:58,158 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:58:58,158 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:59:04,071 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=125928817165744 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:59:05,296 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:59:05,296 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:59:11,154 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=125928817165792 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:59:11,155 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:59:11,155 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:59:17,075 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=125928817165792 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:59:18,262 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:59:18,263 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 19:59:24,122 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=125928794597760 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 19:59:24,122 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:59:24,122 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 19:59:30,054 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=125928794597760 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 19:59:31,361 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K20_sw3_lam1.0/00_global_refine
+2026-06-13 19:59:35,136 [INFO] [Stage2-LDM] ----- Stage2-LDM run start | scheduler_config=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K20_sw3_lam1.0/scheduler_config.json | output_dir=ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K20_sw3_lam1.0/02_refined_blockwise | seed=0 -----
+2026-06-13 19:59:35,216 [INFO] [Stage2-LDM] Loading model from: /home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt
+2026-06-13 20:00:46,494 [INFO] [Stage2-LDM] load_state_dict: missing=0 unexpected=4
+2026-06-13 20:00:52,360 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:00:52,361 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:00:59,768 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_0 id=137130815908272 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:00:59,768 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:00:59,768 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:07,249 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_0 id=137130815908272 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:01:08,565 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:08,565 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:14,458 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_1 id=137133380566320 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:01:14,458 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:14,459 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:20,397 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_1 id=137133380566320 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:01:21,610 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:21,611 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:27,494 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_2 id=137143654499232 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:01:27,495 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:27,495 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:33,421 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_2 id=137143654499232 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:01:34,620 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:34,620 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:40,529 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_3 id=137133380565456 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:01:40,530 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:40,530 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:46,500 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_3 id=137133380565456 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:01:47,699 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:47,700 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:01:53,628 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_4 id=137130815908272 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:01:53,628 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:53,628 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:01:59,547 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_4 id=137130815908272 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:02:00,744 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:00,744 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:06,662 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_5 id=137133380560992 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:02:06,663 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:06,663 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:12,585 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_5 id=137133380560992 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:02:13,804 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:13,804 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:19,705 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_6 id=137130815908272 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:02:19,706 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:19,706 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:25,634 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_6 id=137130815908272 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:02:26,893 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:26,893 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=False | blocks=25
+2026-06-13 20:02:32,786 [INFO] [Stage2-LDM] [collector debug] phase=after_baseline_chunk_7 id=137133380563104 writes=10000 baseline_layers=25 enc0_steps=200 cache_layers=0 enc0_steps=0 | baseline_hook_stats={'recompute_hits': 10000, 'cache_hits': 0, 'total_hook_calls': 10000}
+2026-06-13 20:02:32,787 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:32,787 [INFO] [Stage2-LDM] Runtime cache hooks enabled | cache_enabled=True | blocks=25
+2026-06-13 20:02:38,715 [INFO] [Stage2-LDM] [collector debug] phase=after_cache_chunk_7 id=137133380563104 writes=20000 baseline_layers=25 enc0_steps=200 cache_layers=25 enc0_steps=200 | cache_hook_stats={'recompute_hits': 2802, 'cache_hits': 7198, 'total_hook_calls': 10000}
+2026-06-13 20:02:39,958 [INFO] [Stage2-LDM] 寫入 ldm_S3cache/cache_method/Stage2/stage2_output_qldm/src_K20_sw3_lam1.0/02_refined_blockwise
