@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
-# Stage2-LDM full experiments:
-# - 3 fixed Stage1 sources
-# - each source runs Pass1(global) -> build blockwise threshold -> Pass2(blockwise)
-# - verifies both threshold JSON and final refined scheduler JSON
+# Stage2-LDM (Q-LDM): 3 retained Stage1 sources
+# - each source: Pass1(global) -> blockwise threshold -> Pass2(blockwise)
+# - verifies threshold JSON and final refined scheduler JSON
 
 set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
+
+export PYTHONPATH="/home/jimmy/TFMQ-DM:/home/jimmy/TFMQ-DM/stable-diffusion:/home/jimmy/latent-diffusion:/home/jimmy/latent-diffusion/src/taming-transformers:/home/jimmy/latent-diffusion/ldm_S3cache/cache_method:${PYTHONPATH:-}"
 
 PY_REFINE="python ldm_S3cache/cache_method/Stage2/stage2_runtime_refine_ldm.py"
 PY_THRESH="python ldm_S3cache/cache_method/Stage2/build_blockwise_thresholds_ldm.py"
 PY_VERIFY="python ldm_S3cache/cache_method/Stage2/verify_stage2_ldm.py"
 
 OUT_BASE="${OUT_BASE:-ldm_S3cache/cache_method/Stage2/stage2_output_qldm}"
+STAGE1_DIR="${STAGE1_DIR:-ldm_S3cache/cache_method/Stage1/stage1_output_qldm}"
 SEED="${SEED:-0}"
 CALI_CKPT="${CALI_CKPT:-/home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth}"
 
@@ -33,9 +35,9 @@ EVAL_CHUNK_SIZE="${EVAL_CHUNK_SIZE:-1}"
 RESUME="${RESUME:-models/ldm/ffhq256/model.ckpt}"
 BLOCK_MAP="${BLOCK_MAP:-ldm_block_map_ffhq256.json}"
 
-SRC_BASELINE="${SRC_BASELINE:-/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam1.0/scheduler_config.json}"
-SRC_CAND1="${SRC_CAND1:-/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K15_sw3_lam0.5/scheduler_config.json}"
-SRC_CAND2="${SRC_CAND2:-/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage1/stage1_output_qldm/sweep_K20_sw3_lam1.0/scheduler_config.json}"
+SRC_BASELINE="${SRC_BASELINE:-${STAGE1_DIR}/sweep_K8_sw5_lam0.5/scheduler_config.json}"
+SRC_CAND1="${SRC_CAND1:-${STAGE1_DIR}/sweep_K12_sw5_lam0.5/scheduler_config.json}"
+SRC_CAND2="${SRC_CAND2:-${STAGE1_DIR}/sweep_K15_sw3_lam0.5/scheduler_config.json}"
 
 run_one() {
   local src_name="$1"
@@ -107,21 +109,25 @@ run_one() {
 }
 
 echo "================================================================"
-echo "Stage2-LDM full experiments"
+echo "Stage2-LDM (Q-LDM) — 3 retained Stage1 configs"
 echo "OUT_BASE=${OUT_BASE}"
+echo "STAGE1_DIR=${STAGE1_DIR}"
 echo "SEED=${SEED}"
 echo "CALI_CKPT=${CALI_CKPT}"
-echo "ZONE=${ZONE} PEAK=${PEAK}"
-echo "Q_ZONE=${Q_ZONE} Q_PEAK=${Q_PEAK} PEAK_OVER_ZONE_MIN=${PEAK_OVER_ZONE_MIN}"
-echo "THRESH_SOURCE=${THRESH_SOURCE}"
-echo "EVAL_NUM_IMAGES=${EVAL_NUM_IMAGES} EVAL_CHUNK_SIZE=${EVAL_CHUNK_SIZE}"
-echo "RESUME=${RESUME}"
-echo "BLOCK_MAP=${BLOCK_MAP}"
+echo "PYTHONPATH=${PYTHONPATH}"
 echo "================================================================"
 
-run_one "src_K15_sw3_lam1.0" "${SRC_BASELINE}"
-run_one "src_K15_sw3_lam0.5" "${SRC_CAND1}"
-run_one "src_K20_sw3_lam1.0" "${SRC_CAND2}"
+# Step 0: clear old outputs (pre-EMA-fix artifacts from 06-13)
+if [[ -d "${OUT_BASE}" ]]; then
+  echo "Clearing old outputs under ${OUT_BASE} ..."
+  find "${OUT_BASE}" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+fi
+mkdir -p "${OUT_BASE}"
+echo "Cleared. Ready for fresh Stage2 run."
+
+run_one "sweep_K8_sw5_lam0.5" "${SRC_BASELINE}"
+run_one "sweep_K12_sw5_lam0.5" "${SRC_CAND1}"
+run_one "sweep_K15_sw3_lam0.5" "${SRC_CAND2}"
 
 echo ""
 echo "================================================================"

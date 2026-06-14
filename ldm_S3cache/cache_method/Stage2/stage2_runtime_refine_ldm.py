@@ -25,16 +25,56 @@ import torch
 from omegaconf import OmegaConf
 
 
+def _is_qldm_run() -> bool:
+    return "--cali_ckpt" in sys.argv
+
+
+def _repo_root() -> str:
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+
+
+def _prefer_tfmq_ldm_namespace() -> None:
+    """Prefer TFMQ-DM's patched openaimodel (QKMatMul) over latent-diffusion's."""
+    tfmq_root = os.environ.get("TFMQ_DM_ROOT", "/home/jimmy/TFMQ-DM")
+    ldm_sd = os.path.join(tfmq_root, "stable-diffusion", "ldm")
+    ldm_ld = os.path.join(_repo_root(), "ldm")
+    import ldm as ldm_pkg
+
+    ldm_pkg.__path__ = [p for p in (ldm_sd, ldm_ld) if os.path.isdir(p)]
+    for mod_name in list(sys.modules):
+        if mod_name.startswith("ldm.modules.diffusionmodules.openaimodel"):
+            del sys.modules[mod_name]
+
+
 def _bootstrap_local_paths() -> None:
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
-    candidate_paths = [
-        repo_root,
-        os.path.join(repo_root, "src", "taming-transformers"),
-        os.path.join(repo_root, "src", "clip"),
-    ]
-    for path in candidate_paths:
+    repo_root = _repo_root()
+    tfmq_root = os.environ.get("TFMQ_DM_ROOT", "/home/jimmy/TFMQ-DM")
+    tfmq_sd = os.path.join(tfmq_root, "stable-diffusion")
+    cache_method = os.path.join(repo_root, "ldm_S3cache", "cache_method")
+
+    if _is_qldm_run():
+        ordered = [
+            tfmq_root,
+            tfmq_sd,
+            repo_root,
+            os.path.join(repo_root, "src", "taming-transformers"),
+            os.path.join(repo_root, "src", "clip"),
+            cache_method,
+        ]
+    else:
+        ordered = [
+            repo_root,
+            os.path.join(repo_root, "src", "taming-transformers"),
+            os.path.join(repo_root, "src", "clip"),
+            cache_method,
+        ]
+
+    for path in reversed(ordered):
         if os.path.isdir(path) and path not in sys.path:
             sys.path.insert(0, path)
+
+    if _is_qldm_run():
+        _prefer_tfmq_ldm_namespace()
 
 
 _bootstrap_local_paths()
@@ -363,6 +403,16 @@ def _load_block_map_runtime_to_unet(block_map_path: Path) -> Dict[str, str]:
     return runtime_to_unet
 
 
+def _sampling_ema_context(model: torch.nn.Module):
+    """FP LDM uses ema_scope; Q-LDM skips it (EMA baked-in before quant, use_ema=False)."""
+    use_ema = bool(getattr(model, "use_ema", True))
+    ema_mode = "active" if use_ema else "skipped"
+    print(f"[Stage2] use_ema={use_ema}, ema_scope={ema_mode}")
+    if use_ema:
+        return model.ema_scope("stage2_ldm_refine")
+    return nullcontext()
+
+
 def _run_single_sampling_pass(
     *,
     model: torch.nn.Module,
@@ -376,7 +426,7 @@ def _run_single_sampling_pass(
     shape = [unet.in_channels, unet.image_size, unet.image_size]
     bsz = int(x_T.shape[0])
 
-    with model.ema_scope("stage2_ldm_refine"):
+    with _sampling_ema_context(model):
         with runtime_ctx:
             _samples, _ = sampler.sample(
                 S=int(num_steps),
@@ -686,6 +736,10 @@ def run_stage2_refine_ldm(
         from Stage2.stage2_scheduler_adapter_ldm import setup_quantized_ldm
 
         model = setup_quantized_ldm(model, cali_ckpt)
+        LOGGER.info(
+            "[Stage2] Q-LDM loaded: use_ema=%s",
+            getattr(model, "use_ema", "N/A"),
+        )
     sampler = DDIMSampler(model)
     sampler.make_schedule(ddim_num_steps=T, ddim_eta=eta, verbose=False)
     ddim_desc = [int(x) for x in np.flip(sampler.ddim_timesteps)]
