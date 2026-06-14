@@ -1,0 +1,78 @@
+============================================================
+Q-LDM FID@5K: baseline + 3 Stage2 cache schedulers
+N_SAMPLES=5000 batch_size=16 seed=0 eta=0.0 steps=200
+CALI_CKPT=/home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+RESULTS_ROOT=ldm_S3cache/cache_method/start_run/results/fid_5k_qldm
+RUNS_INDEX=ldm_S3cache/cache_method/start_run/results/fid_5k_qldm/runs_index.jsonl
+STAGE2_ROOT=ldm_S3cache/cache_method/Stage2/stage2_output_qldm
+============================================================
+
+=== Parameter confirmation ===
+
+=== Run 1: baseline ===
+mode: baseline (no cache)
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 2: K8_sw5_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 3: K12_sw5_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K12_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 4: K15_sw3_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K15_sw3_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Path verification ===
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K12_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K15_sw3_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[ERROR] path verification failed — aborting batch.
+============================================================
+Q-LDM FID@5K: baseline + 3 Stage2 cache schedulers
+N_SAMPLES=5000 batch_size=16 seed=0 eta=0.0 steps=200
+CALI_CKPT=/home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+RESULTS_ROOT=ldm_S3cache/cache_method/start_run/results/fid_5k_qldm
+RUNS_INDEX=ldm_S3cache/cache_method/start_run/results/fid_5k_qldm/runs_index.jsonl
+STAGE2_ROOT=ldm_S3cache/cache_method/Stage2/stage2_output_qldm
+============================================================
+
+=== Parameter confirmation ===
+
+=== Run 1: baseline ===
+mode: baseline (no cache)
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 2: K8_sw5_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 3: K12_sw5_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K12_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Run 4: K15_sw3_lam0.5 ===
+mode: cache
+scheduler: ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K15_sw3_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+cali_ckpt: /home/jimmy/TFMQ-DM/cali_ckpt/ffhq256_w8a8.pth
+batch_size: 16, seed: 0, eta: 0.0, steps: 200, n_samples: 5000
+
+=== Path verification ===
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K12_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[OK] ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K15_sw3_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
+[ERROR] path verification failed — aborting batch.
