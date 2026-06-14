@@ -79,5 +79,32 @@
     "cache_hook_recompute_hits": 231418,
     "cache_bypass_ratio": 0.7052,
     "forced_recompute_due_to_empty_cache": 0
+  },
+  {
+    "run_type": "baseline_no_npz",
+    "scheduler_name": "baseline_no_npz_qldm",
+    "scheduler_json": null,
+    "fid": 13.87567983236454,
+    "fid_at": "5k",
+    "n_samples": 5000,
+    "dataset_tag": "ffhq256",
+    "ddim_steps": 200,
+    "eta": 0.0,
+    "seed": 0,
+    "batch_size": 32,
+    "fid_dims": 2048,
+    "no_npz": true,
+    "timestamp": "20260614_121206",
+    "sample_time_min": 86.2800458073616,
+    "fid_time_min": 34.84810293912888,
+    "gen_dir": "/home/jimmy/latent-diffusion/outputs/start_run/fid_5k/20260614_121206_baseline_no_npz/gen_images",
+    "eval_dir": "/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_5k",
+    "ckpt": "/home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt",
+    "run_output_dir": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_5k_qldm/20260614/baseline_no_npz_qldm/0614_12_baseline_no_npz_qldm",
+    "cache_hook_cache_hits": null,
+    "cache_bypass_hits": null,
+    "cache_hook_recompute_hits": null,
+    "cache_bypass_ratio": null,
+    "forced_recompute_due_to_empty_cache": null
   }
 ]

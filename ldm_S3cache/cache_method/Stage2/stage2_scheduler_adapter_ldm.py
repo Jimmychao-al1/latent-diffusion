@@ -56,6 +56,21 @@ def get_unet_for_hook(model: Any) -> Any:
     )
 
 
+def _apply_ema_weights_before_quant(model: Any) -> bool:
+    """Copy EMA shadow weights into model.model before QuantModel wrapping.
+
+    Mirrors TFMQ-DM sample_diffusion_ldm.py: store + copy_to on DiffusionWrapper.
+    Returns True when EMA was applied, False when model_ema is unavailable.
+    """
+    if not (hasattr(model, "model_ema") and model.model_ema is not None):
+        print("[Q-LDM] WARNING: model_ema not found; quantizing training weights")
+        return False
+    model.model_ema.store(model.model.parameters())
+    model.model_ema.copy_to(model.model)
+    print("[Q-LDM] EMA weights copied to model.model before quantization")
+    return True
+
+
 def setup_quantized_ldm(model: Any, cali_ckpt_path: str | Path) -> Any:
     """Wrap FP LDM with TFMQ-DM QuantModel, load calibration checkpoint, inject FSC.
 
@@ -77,6 +92,8 @@ def setup_quantized_ldm(model: Any, cali_ckpt_path: str | Path) -> Any:
     cali_ckpt_path = str(cali_ckpt_path)
     wrapper = model.model
 
+    ema_applied = _apply_ema_weights_before_quant(model)
+
     setattr(wrapper.diffusion_model, "split", True)
 
     wq_params = {"bits": 8, "channel_wise": True, "scaler": Scaler.MINMAX}
@@ -92,6 +109,7 @@ def setup_quantized_ldm(model: Any, cali_ckpt_path: str | Path) -> Any:
         wq_params=wq_params,
         aq_params=aq_params,
         cali=False,
+        softmax_a_bit=8,
         aq_mode=[QMODE.NORMAL.value, QMODE.QDIFF.value],
     )
     qnn.cuda().eval()
@@ -125,13 +143,15 @@ def setup_quantized_ldm(model: Any, cali_ckpt_path: str | Path) -> Any:
     wrapper.register_forward_pre_hook(_fsc_pre_hook)
 
     # QuantModel renames modules under diffusion_model; EMA shadow keys no longer match.
-    # Checkpoint weights are already loaded before quantization.
+    # Weights are already EMA (if available); disable ema_scope swap during sampling.
     if hasattr(model, "use_ema"):
         model.use_ema = False
 
     print(
         f"[Q-LDM] QuantModel loaded: {n_act} FSC intervals, "
-        f"tot={wrapper.tot}, t_max={wrapper.t_max}"
+        f"tot={wrapper.tot}, t_max={wrapper.t_max}, "
+        f"ema_applied={ema_applied}, use_ema={getattr(model, 'use_ema', None)}, "
+        f"softmax_a_bit=8, fsc=forward_pre_hook"
     )
     return model
 
