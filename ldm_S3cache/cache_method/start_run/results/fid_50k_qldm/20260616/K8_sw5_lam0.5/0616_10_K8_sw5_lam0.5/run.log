@@ -5,3 +5,6 @@
 2026-06-16 10:11:24,062 [INFO] [LDM-start_run] Loading calibration model done.
 2026-06-16 10:11:25,353 [INFO] [LDM-start_run] scheduler_json=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json
 2026-06-16 10:11:25,353 [INFO] [LDM-start_run] scheduler semantics: loop index 0..199
+2026-06-16 19:28:39,973 [INFO] [LDM-start_run] FID=5.787828
+2026-06-16 19:28:40,006 [INFO] [LDM-start_run] results_json=/home/jimmy/latent-diffusion/results/fid_results_qldm.json
+2026-06-16 19:28:40,006 [INFO] [LDM-start_run] run_output_dir=/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_50k_qldm/20260616/K8_sw5_lam0.5/0616_10_K8_sw5_lam0.5

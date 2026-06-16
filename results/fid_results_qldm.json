@@ -241,5 +241,32 @@
     "cache_hook_recompute_hits": null,
     "cache_bypass_ratio": null,
     "forced_recompute_due_to_empty_cache": null
+  },
+  {
+    "run_type": "stage2_scheduler",
+    "scheduler_name": "K8_sw5_lam0.5",
+    "scheduler_json": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/Stage2/stage2_output_qldm/sweep_K8_sw5_lam0.5/02_refined_blockwise/stage2_refined_scheduler_config.json",
+    "fid": 5.787828365481232,
+    "fid_at": "50k",
+    "n_samples": 50000,
+    "dataset_tag": "ffhq256",
+    "ddim_steps": 200,
+    "eta": 0.0,
+    "seed": 0,
+    "batch_size": 16,
+    "fid_dims": 2048,
+    "no_npz": false,
+    "timestamp": "20260616_101047",
+    "sample_time_min": 539.1673908869426,
+    "fid_time_min": 18.070553684234618,
+    "gen_dir": "/home/jimmy/latent-diffusion/outputs/start_run/fid_50k/20260616_101047_stage2_K8_sw5_lam0.5/gen_images",
+    "eval_dir": "/home/jimmy/latent-diffusion/outputs/start_run/real_eval_cache_ffhq256_50k",
+    "ckpt": "/home/jimmy/latent-diffusion/models/ldm/ffhq256/model.ckpt",
+    "run_output_dir": "/home/jimmy/latent-diffusion/ldm_S3cache/cache_method/start_run/results/fid_50k_qldm/20260616/K8_sw5_lam0.5/0616_10_K8_sw5_lam0.5",
+    "cache_hook_cache_hits": 11481250,
+    "cache_bypass_hits": 11481250,
+    "cache_hook_recompute_hits": 4143750,
+    "cache_bypass_ratio": 0.7348,
+    "forced_recompute_due_to_empty_cache": 0
   }
 ]
